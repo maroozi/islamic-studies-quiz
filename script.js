@@ -549,7 +549,6 @@ const questionNumber = document.getElementById('questionNumber');
 const scoreDisplay = document.getElementById('scoreDisplay');
 const progressFill = document.getElementById('progressFill');
 const progressPercent = document.getElementById('progressPercent');
-const topicBadge = document.getElementById('topicBadge');
 const finalScore = document.getElementById('finalScore');
 const resultTitle = document.getElementById('resultTitle');
 const resultMessage = document.getElementById('resultMessage');
@@ -591,7 +590,6 @@ function showQuestion() {
     // Update header info
     questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questionBank.length}`;
     scoreDisplay.textContent = score;
-    topicBadge.textContent = question.topic;
     
     // Update progress bar
     const progress = ((currentQuestionIndex + 1) / questionBank.length) * 100;
@@ -627,13 +625,13 @@ function showQuestion() {
         button.textContent = answer.text;
         button.style.opacity = '0';
         button.style.animation = `fadeInUp 0.4s ease-out ${index * 0.1}s forwards`;
-        button.addEventListener('click', () => selectAnswer(answer, button));
+        button.addEventListener('click', () => selectAnswer(answer, button, shuffledAnswers));
         answersContainer.appendChild(button);
     });
 }
 
 // Select Answer
-function selectAnswer(answer, button) {
+function selectAnswer(answer, button, shuffledAnswers) {
     if (selectedAnswer) return; // Prevent multiple selections
     
     selectedAnswer = true;
@@ -672,9 +670,9 @@ function selectAnswer(answer, button) {
         feedbackText.textContent = randomMessage;
         feedbackEmoji.textContent = '💪';
         
-        // Highlight the correct answer
+        // Highlight the correct answer in the shuffled buttons
         allButtons.forEach((btn, index) => {
-            if (question.answers[index].correct) {
+            if (shuffledAnswers[index].correct) {
                 btn.classList.add('correct');
             }
         });
