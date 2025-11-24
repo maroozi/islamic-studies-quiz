@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2: We Are Muslims - Islamic Studies Quiz</title>
+    <link rel="stylesheet" href="year2-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="welcome-box">
+                <div class="main-icon">🌟</div>
+                <h1>We Are Muslims!</h1>
+                <h2 class="subtitle">Year 2 – Term 1</h2>
+                <p class="lesson-desc">✨ Learn about being a Muslim ✨</p>
+                
+                <div class="topics-display">
+                    <h3>What We'll Learn:</h3>
+                    <div class="topic-cards">
+                        <div class="topic-card">
+                            <span class="topic-icon">☝️</span>
+                            <p>Allah ﷻ is One</p>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📖</span>
+                            <p>The Qur'an</p>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🌙</span>
+                            <p>Prophet Muhammad ﷺ</p>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">❤️</span>
+                            <p>Being Kind</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-info">
+                    <div class="info-item">
+                        <span class="info-icon">📝</span>
+                        <span>12 Questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>No time limit</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌟</span>
+                        <span>Fun & Easy!</span>
+                    </div>
+                </div>
+
+                <button id="startBtn" class="start-btn">🚀 Let's Start!</button>
+                <button id="backToHome" class="back-btn">← Back</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-box">
+                <div class="progress-section">
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-header-info">
+                        <span id="questionNumber" class="question-counter">Question 1 of 12</span>
+                        <span id="scoreDisplay" class="score">Score: 0/12 ⭐</span>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <h2 id="questionText" class="question"></h2>
+                </div>
+
+                <div id="answersContainer" class="answers-grid"></div>
+
+                <div id="explanation" class="explanation-box" style="display: none;"></div>
+
+                <button id="nextBtn" class="next-btn" style="display: none;">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-box">
+                <h1 class="results-title">🎉 Well Done! 🎉</h1>
+                
+                <div class="final-score-display">
+                    <div class="score-big">
+                        <span id="finalScore">0</span>/<span>12</span>
+                    </div>
+                    <div class="stars-display" id="starsDisplay">⭐⭐⭐</div>
+                </div>
+
+                <p id="performanceMessage" class="performance-text"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-card correct">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card incorrect">
+                        <div class="stat-icon">✗</div>
+                        <div class="stat-value" id="incorrectAnswers">0</div>
+                        <div class="stat-label">Wrong</div>
+                    </div>
+                </div>
+
+                <div class="results-buttons">
+                    <button id="retryBtn" class="retry-btn">🔄 Try Again</button>
+                    <button id="backHome" class="back-home-btn">← Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="year2-we-are-muslims-script.js"></script>
+</body>
+</html>

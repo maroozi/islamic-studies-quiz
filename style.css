@@ -174,6 +174,223 @@ body {
     50% { opacity: 0.6; }
 }
 
+/* Subject Selection Screen */
+.subject-selection-box {
+    background: linear-gradient(135deg, #fff 0%, #f8f9ff 100%);
+    border-radius: 40px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.subject-selection-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+.main-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.subject-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-card {
+    background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
+    border-radius: 25px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 4px solid transparent;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.subject-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+    border-color: #667eea;
+}
+
+.subject-card:hover::before {
+    opacity: 1;
+}
+
+.subject-card[data-subject="islamic-studies"] {
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.subject-card[data-subject="islamic-studies"]:hover {
+    border-color: #667eea;
+}
+
+.subject-card[data-subject="quran"] {
+    border-color: rgba(56, 239, 125, 0.3);
+}
+
+.subject-card[data-subject="quran"]:hover {
+    border-color: #38ef7d;
+}
+
+.subject-card[data-subject="arabic"] {
+    border-color: rgba(245, 87, 108, 0.3);
+}
+
+.subject-card[data-subject="arabic"]:hover {
+    border-color: #f5576c;
+}
+
+.subject-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.subject-card:nth-child(2) .subject-icon {
+    animation-delay: 0.5s;
+}
+
+.subject-card:nth-child(3) .subject-icon {
+    animation-delay: 1s;
+}
+
+.subject-card h3 {
+    color: #2c3e50;
+    font-size: 1.8em;
+    margin-bottom: 12px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-desc {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+    min-height: 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.mini-pill {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.1em;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.select-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(245, 87, 108, 0.5);
+}
+
+.select-btn:active {
+    transform: translateY(0);
+}
+
+.back-btn {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(168, 237, 234, 0.3);
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(168, 237, 234, 0.5);
+}
+
+.change-subject-btn {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.3em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 12px 30px rgba(168, 237, 234, 0.4);
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.change-subject-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(168, 237, 234, 0.6);
+}
+
+.change-subject-btn:active {
+    transform: translateY(-1px) scale(1.01);
+}
+
 /* Quiz Screen */
 .quiz-header {
     background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
@@ -186,25 +403,9 @@ body {
 
 .header-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-}
-
-.topic-badge {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-size: 1em;
-    font-weight: 700;
-    color: #333;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    animation: wiggle 3s ease-in-out infinite;
-}
-
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-2deg); }
-    50% { transform: rotate(2deg); }
 }
 
 .score-badge {
@@ -758,8 +959,26 @@ body {
     }
 
     .welcome-box,
-    .results-box {
+    .results-box,
+    .subject-selection-box {
         padding: 40px 25px;
+    }
+
+    .subject-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .subject-card {
+        padding: 25px 20px;
+    }
+
+    .subject-icon {
+        font-size: 3.5em;
+    }
+
+    .subject-card h3 {
+        font-size: 1.5em;
     }
 
     .welcome-box h1 {

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Ikhfāʾ Quiz - Year 6 Tajweed</title>
+    <link rel="stylesheet" href="ikhfaa-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="welcome-box">
+                <div class="main-icon">🤫</div>
+                <h1>Unit 4: Ikhfāʾ</h1>
+                <h2 style="font-size: 2em; color: #ff6b6b; font-family: 'Amiri Quran', serif;">إخفاء</h2>
+                <p class="subtitle">✨ Learn the Rules of Hiding! ✨</p>
+                
+                <div class="unit-badge">
+                    <span style="font-size: 1.1em;">Focus: Ikhfāʾ (Hiding)</span>
+                </div>
+                
+                <div class="ikhfaa-letters-display">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">The 15 Ikhfāʾ Letters</h3>
+                    <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">The remaining letters after Idh-hār, Idghām, and Iqlāb</p>
+                    <div class="letters-grid">
+                        <span class="ikhfaa-letter">ص</span>
+                        <span class="ikhfaa-letter">ذ</span>
+                        <span class="ikhfaa-letter">ث</span>
+                        <span class="ikhfaa-letter">ك</span>
+                        <span class="ikhfaa-letter">ج</span>
+                        <span class="ikhfaa-letter">ش</span>
+                        <span class="ikhfaa-letter">ق</span>
+                        <span class="ikhfaa-letter">س</span>
+                        <span class="ikhfaa-letter">د</span>
+                        <span class="ikhfaa-letter">ط</span>
+                        <span class="ikhfaa-letter">ز</span>
+                        <span class="ikhfaa-letter">ف</span>
+                        <span class="ikhfaa-letter">ت</span>
+                        <span class="ikhfaa-letter">ض</span>
+                        <span class="ikhfaa-letter">ظ</span>
+                    </div>
+                    <p style="font-size: 0.9em; color: #777; margin-top: 10px;">Pronounce with nasal ghunnah for 2 counts</p>
+                </div>
+                
+                <div class="quiz-info">
+                    <div class="info-item">
+                        <span class="info-icon">📝</span>
+                        <span>25 Questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>No time limit</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🎯</span>
+                        <span>Learn as you go!</span>
+                    </div>
+                </div>
+
+                <button id="startBtn" class="start-btn">🚀 Start Learning</button>
+                <button id="backToUnit" class="back-btn">← Back to Unit 4</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-box">
+                <div class="progress-section">
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-header-info">
+                        <span id="questionNumber" class="question-counter">Question 1 of 45</span>
+                        <span id="scoreDisplay" class="score">Score: 0/45</span>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <h2 id="questionText" class="question"></h2>
+                </div>
+
+                <div id="answersContainer" class="answers-grid"></div>
+
+                <div id="explanation" class="explanation-box" style="display: none;"></div>
+
+                <button id="nextBtn" class="next-btn" style="display: none;">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-box">
+                <h1 class="results-title">� Quiz Complete! �</h1>
+                
+                <div class="final-score-display">
+                    <div class="score-big">
+                        <span id="finalScore">0</span>/<span>45</span>
+                    </div>
+                    <div class="percentage-big" id="percentage">0%</div>
+                </div>
+
+                <p id="performanceMessage" class="performance-text"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-card correct">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card incorrect">
+                        <div class="stat-icon">✗</div>
+                        <div class="stat-value" id="incorrectAnswers">0</div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
+                    <div class="stat-card accuracy">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="accuracy">0%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+
+                <div class="results-buttons">
+                    <button id="retryBtn" class="retry-btn">🔄 Try Again</button>
+                    <button id="backToUnits" class="back-units-btn">← Back to Unit 4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ikhfaa-script.js"></script>
+</body>
+</html>

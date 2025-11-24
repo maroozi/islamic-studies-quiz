@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qur'an - Unit 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Unit 1 Quiz Selection Screen -->
+        <div id="unitScreen" class="screen active">
+            <div class="subject-selection-box">
+                <div class="main-icon">📖</div>
+                <h1 style="font-size: 2.5em; font-weight: 800; color: #2c3e50; margin: 15px 0;">Qur'an Studies</h1>
+                <h2 style="font-size: 1.8em; margin: 10px 0; color: #667eea; font-weight: 600;">Unit 1</h2>
+                <p class="subtitle">✨ Choose your quiz topic! ✨</p>
+                
+                <div class="subject-cards">
+                    <div class="subject-card" data-subject="tajweed">
+                        <div class="subject-icon">🎯</div>
+                        <h3>Tajweed Quiz</h3>
+                        <h4 style="color: #667eea; margin: 10px 0;">Idh-hār (إظهار)</h4>
+                        <p class="subject-desc">Learn the rules of Noon Sākinah and Tanween with Idh-hār!</p>
+                        <div class="subject-topics">
+                            <span class="mini-pill">38 Questions</span>
+                            <span class="mini-pill">Throat Letters</span>
+                            <span class="mini-pill">Color-Coded</span>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); border-radius: 15px;">
+                            <p style="font-size: 2em; margin: 5px 0; color: #2c3e50; font-family: 'Amiri Quran', serif;">
+                                <span style="color: #e53935;">ء هـ ع ح غ خ</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #555; margin: 5px 0;">The six Idh-hār letters</p>
+                        </div>
+                        <button class="select-btn" onclick="window.location.href='tajweed-quran.html'" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Start Tajweed Quiz 🚀</button>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="basic-quran">
+                        <div class="subject-icon">📚</div>
+                        <h3>Basic Qur'an Quiz</h3>
+                        <h4 style="color: #11998e; margin: 10px 0;">General Knowledge</h4>
+                        <p class="subject-desc">Test your general knowledge about the Holy Qur'an!</p>
+                        <div class="subject-topics">
+                            <span class="mini-pill">3 Questions</span>
+                            <span class="mini-pill">Surahs</span>
+                            <span class="mini-pill">Verses</span>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 15px;">
+                            <p style="font-size: 1.1em; color: #2c3e50; margin: 5px 0;">
+                                📖 Learn about Surahs
+                            </p>
+                            <p style="font-size: 0.9em; color: #555; margin: 5px 0;">Quick starter quiz</p>
+                        </div>
+                        <button class="select-btn" onclick="window.location.href='quran.html'" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">Start Basic Quiz 🚀</button>
+                    </div>
+                </div>
+                
+                <button onclick="window.location.href='quran-units.html'" class="back-btn" style="margin-top: 20px;">← Back to All Units</button>
+                <p class="encouragement">Study hard and Allah will reward you! 💪</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

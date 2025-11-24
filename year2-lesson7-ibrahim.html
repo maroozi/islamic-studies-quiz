@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2: Prophet Ibrāhīm (AS) - Fun Quiz!</title>
+    <link rel="stylesheet" href="year2-kahoot-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
+                <div class="title-section">
+                    <h1 class="game-title">🕌 Prophet Ibrāhīm (AS): Khalīl Allāh!</h1>
+                    <p class="subtitle">Year 2 – Lesson 7</p>
+                    <div class="fun-badge">💚 Friend of Allāh! 💚</div>
+                </div>
+                
+                <div class="lesson-preview">
+                    <h2>Today's Topics:</h2>
+                    <div class="topic-grid">
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="bubble-emoji">🔥</span>
+                            <span class="bubble-text">The Fire Miracle</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <span class="bubble-emoji">💧</span>
+                            <span class="bubble-text">Zamzam Water</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="bubble-emoji">🐏</span>
+                            <span class="bubble-text">The Sacrifice</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span class="bubble-emoji">🕋</span>
+                            <span class="bubble-text">Building Ka'bah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-info">
+                    <div class="info-card">
+                        <span class="info-emoji">📝</span>
+                        <span class="info-text">15 Questions</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">🎯</span>
+                        <span class="info-text">Earn Stars!</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">🏆</span>
+                        <span class="info-text">Have Fun!</span>
+                    </div>
+                </div>
+
+                <button id="startBtn" class="start-button">
+                    <span class="button-text">🚀 Let's Play!</span>
+                </button>
+                
+                <button id="backBtn" class="back-button">← Back to Lessons</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-section">
+                    <div class="question-counter">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">15</span>
+                    </div>
+                    <div class="star-display">
+                        <span id="stars">⭐ 0</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-box">
+                    <h2 id="questionText" class="question-text"></h2>
+                </div>
+
+                <div id="answersGrid" class="answers-grid">
+                    <!-- Kahoot-style colored answer buttons will be inserted here -->
+                </div>
+            </div>
+
+            <div id="feedback" class="feedback-container">
+                <div class="feedback-content">
+                    <span id="feedbackEmoji" class="feedback-emoji"></span>
+                    <p id="feedbackText" class="feedback-text"></p>
+                    <div id="explanation" class="explanation"></div>
+                </div>
+                <button id="nextBtn" class="next-button">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-content">
+                <div class="results-header">
+                    <div class="trophy-emoji">🏆</div>
+                    <h1 class="results-title">Amazing Work!</h1>
+                </div>
+
+                <div class="stars-earned">
+                    <div class="stars-display-big">
+                        <span id="totalStars">0</span> ⭐
+                    </div>
+                    <p class="stars-label">Stars Earned!</p>
+                </div>
+
+                <div class="score-details">
+                    <div class="score-card">
+                        <div class="score-number" id="correctCount">0</div>
+                        <div class="score-label">✅ Correct</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-number" id="incorrectCount">0</div>
+                        <div class="score-label">❌ Try Again</div>
+                    </div>
+                </div>
+
+                <div id="resultMessage" class="result-message"></div>
+
+                <div class="result-actions">
+                    <button id="retryBtn" class="retry-button">🔄 Play Again</button>
+                    <button id="backToLessonsBtn" class="lessons-button">📚 More Lessons</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="year2-lesson7-script.js"></script>
+</body>
+</html>

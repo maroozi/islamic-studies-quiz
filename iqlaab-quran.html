@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: Iqlāb - Qur'an Tajweed</title>
+    <link rel="stylesheet" href="iqlaab-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+        <div class="welcome-box">
+            <div class="main-icon">🔄</div>
+            <h1>Unit 3: Iqlāb</h1>
+            <div class="unit-badge">Year 6 - Term 1 - Qur'an (Tajweed)</div>
+            
+            <div class="rule-explanation">
+                <h2>What is Iqlāb?</h2>
+                <p><strong>Iqlāb (إِقْلاب)</strong> means "to change" or "to convert".</p>
+                <p>When noon sākinah (نْ) or tanwīn meets the letter <span class="arabic-text">ب</span> (bāʾ), it changes into a <span class="arabic-text">م</span> (meem) sound with ghunnah for 2 counts.</p>
+            </div>
+
+            <div class="iqlaab-letter-display">
+                <h3>The Only Letter of Iqlāb:</h3>
+                <div class="single-letter">
+                    <span class="arabic-text">ب</span>
+                    <span class="transliteration">Bāʾ</span>
+                </div>
+            </div>
+
+            <div class="rule-symbol">
+                <h3>Recognition Symbol:</h3>
+                <p>A small <span class="arabic-text">م</span> (meem) appears above or below the noon sākinah/tanwīn in the Qur'an</p>
+            </div>
+
+            <div class="quiz-info">
+                <div class="info-item">
+                    <span class="info-icon">📝</span>
+                    <span>25 Questions</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">⏱️</span>
+                    <span>No Time Limit</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <span>Master Iqlāb Rules</span>
+                </div>
+            </div>
+
+            <button id="startBtn" class="btn-primary">Start Quiz</button>
+            <button id="backToUnit" class="btn-secondary">← Back to Units</button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+        <div class="quiz-box">
+            <div class="quiz-header">
+                <div class="progress-info">
+                    <span>Question <span id="currentQ">1</span> of <span id="totalQ">25</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="questionContainer" class="question-container">
+                <h2 id="questionText" class="question-text"></h2>
+                <div id="answersContainer" class="answers-container"></div>
+            </div>
+
+            <div class="quiz-navigation">
+                <button id="nextBtn" class="btn-primary" style="display: none;">Next Question →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+        <div class="results-box">
+            <div class="results-icon" id="resultsIcon">🎉</div>
+            <h1>Quiz Complete!</h1>
+            <div class="score-display">
+                <div class="score-circle">
+                    <span id="scorePercentage">0%</span>
+                </div>
+                <p class="score-text">You scored <span id="scoreText">0/25</span></p>
+            </div>
+            <div id="resultMessage" class="result-message"></div>
+            <div class="results-actions">
+                <button id="retryBtn" class="btn-primary">Try Again</button>
+                <button id="backToUnitsBtn" class="btn-secondary">← Back to Units</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="iqlaab-script.js"></script>
+</body>
+</html>

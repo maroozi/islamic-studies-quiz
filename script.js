@@ -1,5 +1,6 @@
-// Complete Question Bank - All 45 Questions
-const questionBank = [
+// Question Banks by Subject
+const questionBanks = {
+    'islamic-studies': [
     // TOPIC: TAWHEED (Questions 1-6)
     {
         topic: "TAWHEED",
@@ -502,9 +503,84 @@ const questionBank = [
         ],
         explanation: "Allah honoured Dawood (AS) with kingship and prophethood."
     }
-];
+    ],
+    
+    'quran': [
+        {
+            topic: "QUR'AN",
+            question: "How many Surahs are in the Qur'an?",
+            answers: [
+                { text: "114", correct: true },
+                { text: "100", correct: false },
+                { text: "99", correct: false },
+                { text: "30", correct: false }
+            ],
+            explanation: "The Holy Qur'an has 114 Surahs (chapters)."
+        },
+        {
+            topic: "QUR'AN",
+            question: "What is the longest Surah in the Qur'an?",
+            answers: [
+                { text: "Surah Al-Baqarah", correct: true },
+                { text: "Surah Al-Fatiha", correct: false },
+                { text: "Surah Yaseen", correct: false },
+                { text: "Surah Al-Ikhlas", correct: false }
+            ],
+            explanation: "Surah Al-Baqarah is the longest Surah with 286 verses."
+        },
+        {
+            topic: "QUR'AN",
+            question: "What is the shortest Surah in the Qur'an?",
+            answers: [
+                { text: "Surah Al-Kawthar", correct: true },
+                { text: "Surah Al-Ikhlas", correct: false },
+                { text: "Surah Al-Fatiha", correct: false },
+                { text: "Surah An-Nas", correct: false }
+            ],
+            explanation: "Surah Al-Kawthar has only 3 verses and is the shortest Surah."
+        }
+    ],
+    
+    'arabic': [
+        {
+            topic: "ARABIC STUDIES",
+            question: "What does 'As-salamu alaykum' mean?",
+            answers: [
+                { text: "Peace be upon you", correct: true },
+                { text: "Good morning", correct: false },
+                { text: "Thank you", correct: false },
+                { text: "Goodbye", correct: false }
+            ],
+            explanation: "As-salamu alaykum is the Islamic greeting meaning 'Peace be upon you'."
+        },
+        {
+            topic: "ARABIC STUDIES",
+            question: "What is the Arabic word for 'book'?",
+            answers: [
+                { text: "Kitaab", correct: true },
+                { text: "Qalam", correct: false },
+                { text: "Bab", correct: false },
+                { text: "Kursi", correct: false }
+            ],
+            explanation: "Kitaab (كتاب) is the Arabic word for book."
+        },
+        {
+            topic: "ARABIC STUDIES",
+            question: "What does 'Shukran' mean?",
+            answers: [
+                { text: "Thank you", correct: true },
+                { text: "Please", correct: false },
+                { text: "Hello", correct: false },
+                { text: "Sorry", correct: false }
+            ],
+            explanation: "Shukran (شكرا) means 'Thank you' in Arabic."
+        }
+    ]
+};
 
 // Game State
+let currentSubject = 'islamic-studies'; // Default subject
+let questionBank = questionBanks[currentSubject]; // Current question bank
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswer = false;
@@ -531,13 +607,19 @@ const wrongMessages = [
 ];
 
 // DOM Elements
+const subjectScreen = document.getElementById('subjectScreen');
 const startScreen = document.getElementById('startScreen');
 const quizScreen = document.getElementById('quizScreen');
 const resultsScreen = document.getElementById('resultsScreen');
 const startBtn = document.getElementById('startBtn');
 const nextBtn = document.getElementById('nextBtn');
-const nextBtnText = document.getElementById('nextBtnText');
 const restartBtn = document.getElementById('restartBtn');
+const backToSubjects = document.getElementById('backToSubjects');
+const changeSubjectBtn = document.getElementById('changeSubjectBtn');
+const subjectIcon = document.getElementById('subjectIcon');
+const subjectTitle = document.getElementById('subjectTitle');
+const subjectSubtitle = document.getElementById('subjectSubtitle');
+const topicsPreview = document.getElementById('topicsPreview');
 const questionText = document.getElementById('questionText');
 const answersContainer = document.getElementById('answersContainer');
 const feedback = document.getElementById('feedback');
@@ -549,7 +631,6 @@ const questionNumber = document.getElementById('questionNumber');
 const scoreDisplay = document.getElementById('scoreDisplay');
 const progressFill = document.getElementById('progressFill');
 const progressPercent = document.getElementById('progressPercent');
-const topicBadge = document.getElementById('topicBadge');
 const finalScore = document.getElementById('finalScore');
 const resultTitle = document.getElementById('resultTitle');
 const resultMessage = document.getElementById('resultMessage');
@@ -560,9 +641,77 @@ const wrongAnswers = document.getElementById('wrongAnswers');
 const progressCircle = document.getElementById('progressCircle');
 
 // Event Listeners
+document.querySelectorAll('.subject-card').forEach(card => {
+    card.addEventListener('click', function() {
+        selectSubject(this.dataset.subject);
+    });
+});
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
+backToSubjects.addEventListener('click', goToSubjectSelection);
+changeSubjectBtn.addEventListener('click', goToSubjectSelection);
+
+// Subject data for welcome screen
+const subjectData = {
+    'islamic-studies': {
+        icon: '🕌',
+        title: '🌙 Term 1 Islamic Studies 🌟',
+        subtitle: '✨ Test your knowledge with 45 questions! ✨',
+        topics: ['Tawheed', 'Shirk', 'Shariah Law', 'Isra & Miraj', 'Prophet Dawood']
+    },
+    'quran': {
+        icon: '📖',
+        title: '🌙 Qur\'an Studies 🌟',
+        subtitle: '✨ Test your knowledge of the Holy Qur\'an! ✨',
+        topics: ['Surahs', 'Verses', 'Revelation', 'Recitation']
+    },
+    'arabic': {
+        icon: '✍️',
+        title: '🌙 Arabic Studies 🌟',
+        subtitle: '✨ Practice your Arabic language skills! ✨',
+        topics: ['Vocabulary', 'Grammar', 'Phrases', 'Reading']
+    }
+};
+
+// Select Subject
+function selectSubject(subject) {
+    // Redirect to Arabic Studies app if Arabic is selected
+    if (subject === 'arabic') {
+        window.location.href = 'arabic-studies.html';
+        return;
+    }
+    
+    currentSubject = subject;
+    questionBank = questionBanks[subject];
+    
+    // Update welcome screen with subject info
+    const data = subjectData[subject];
+    subjectIcon.textContent = data.icon;
+    subjectTitle.textContent = data.title;
+    subjectSubtitle.textContent = data.subtitle;
+    
+    // Update topics preview
+    topicsPreview.innerHTML = '';
+    data.topics.forEach(topic => {
+        const pill = document.createElement('span');
+        pill.classList.add('topic-pill');
+        pill.textContent = topic;
+        topicsPreview.appendChild(pill);
+    });
+    
+    // Navigate to start screen
+    subjectScreen.classList.remove('active');
+    startScreen.classList.add('active');
+}
+
+// Go back to subject selection
+function goToSubjectSelection() {
+    startScreen.classList.remove('active');
+    quizScreen.classList.remove('active');
+    resultsScreen.classList.remove('active');
+    subjectScreen.classList.add('active');
+}
 
 // Shuffle array function (Fisher-Yates algorithm)
 function shuffleArray(array) {
@@ -591,7 +740,6 @@ function showQuestion() {
     // Update header info
     questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questionBank.length}`;
     scoreDisplay.textContent = score;
-    topicBadge.textContent = question.topic;
     
     // Update progress bar
     const progress = ((currentQuestionIndex + 1) / questionBank.length) * 100;
@@ -627,13 +775,13 @@ function showQuestion() {
         button.textContent = answer.text;
         button.style.opacity = '0';
         button.style.animation = `fadeInUp 0.4s ease-out ${index * 0.1}s forwards`;
-        button.addEventListener('click', () => selectAnswer(answer, button));
+        button.addEventListener('click', () => selectAnswer(answer, button, shuffledAnswers));
         answersContainer.appendChild(button);
     });
 }
 
 // Select Answer
-function selectAnswer(answer, button) {
+function selectAnswer(answer, button, shuffledAnswers) {
     if (selectedAnswer) return; // Prevent multiple selections
     
     selectedAnswer = true;
@@ -672,9 +820,9 @@ function selectAnswer(answer, button) {
         feedbackText.textContent = randomMessage;
         feedbackEmoji.textContent = '💪';
         
-        // Highlight the correct answer
+        // Highlight the correct answer in the shuffled buttons
         allButtons.forEach((btn, index) => {
-            if (question.answers[index].correct) {
+            if (shuffledAnswers[index].correct) {
                 btn.classList.add('correct');
             }
         });

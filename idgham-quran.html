@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Idghām Quiz - Year 6 Tajweed</title>
+    <link rel="stylesheet" href="idgham-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="welcome-box">
+                <div class="main-icon">🔄</div>
+                <h1>Unit 2: Idghām</h1>
+                <h2 style="font-size: 2em; color: #11998e; font-family: 'Amiri Quran', serif;">إدغام</h2>
+                <p class="subtitle">✨ Learn the Rules of Merging! ✨</p>
+                
+                <div class="unit-badge">
+                    <span style="font-size: 1.1em;">Focus: Idghām (Merging)</span>
+                </div>
+                
+                <div class="idgham-letters-display">
+                    <h3 style="color: #11998e; margin-bottom: 15px;">The Six Idghām Letters</h3>
+                    <div class="letter-group">
+                        <p style="font-size: 0.9em; color: #8e24aa; font-weight: 600; margin-bottom: 8px;">With Ghunnah (Nasal Sound)</p>
+                        <div class="letters-row">
+                            <span class="idgham-letter ghunnah-letter">ي</span>
+                            <span class="idgham-letter ghunnah-letter">ن</span>
+                            <span class="idgham-letter ghunnah-letter">م</span>
+                            <span class="idgham-letter ghunnah-letter">و</span>
+                        </div>
+                    </div>
+                    
+                    <div class="letter-group" style="margin-top: 20px;">
+                        <p style="font-size: 0.9em; color: #e53935; font-weight: 600; margin-bottom: 8px;">Without Ghunnah (No Nasal)</p>
+                        <div class="letters-row">
+                            <span class="idgham-letter no-ghunnah-letter">ر</span>
+                            <span class="idgham-letter no-ghunnah-letter">ل</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-info">
+                    <div class="info-item">
+                        <span class="info-icon">📝</span>
+                        <span>24 Questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>No Time Limit</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📚</span>
+                        <span>Learn as You Go</span>
+                    </div>
+                </div>
+                
+                <button id="startBtn" class="start-btn">🚀 Start Learning</button>
+                <button id="backToUnit" class="back-btn">← Back to Unit 2</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-container">
+                <div class="progress-header">
+                    <div class="progress-info">
+                        <span id="questionNumber">Question 1 of 24</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="score-topic-row">
+                    <div class="score-badge">
+                        <span class="score-label">Score:</span>
+                        <span id="scoreDisplay" class="score-number">0</span>
+                    </div>
+                    <div class="topic-badge">
+                        <span id="topicBadge">Basics</span>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h2 id="questionText">Question will appear here</h2>
+                </div>
+                
+                <div id="answersContainer" class="answers-container">
+                    <!-- Answer buttons will be inserted here -->
+                </div>
+                
+                <div id="feedback" class="feedback-box hidden">
+                    <div class="feedback-emoji" id="feedbackEmoji">🎉</div>
+                    <p class="feedback-text" id="feedbackText">Correct!</p>
+                    <div class="explanation-box">
+                        <p id="explanationText"></p>
+                    </div>
+                </div>
+                
+                <button id="nextBtn" class="next-btn" style="display: none;">
+                    <span id="nextBtnText">Next Question</span>
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+            
+            <div class="floating-stars">
+                <div class="star">⭐</div>
+                <div class="star">✨</div>
+                <div class="star">🌟</div>
+                <div class="star">💫</div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-box">
+                <div class="confetti">
+                    <div class="confetti-piece">🎉</div>
+                    <div class="confetti-piece">⭐</div>
+                    <div class="confetti-piece">✨</div>
+                    <div class="confetti-piece">🌟</div>
+                    <div class="confetti-piece">💫</div>
+                    <div class="confetti-piece">🎊</div>
+                </div>
+                
+                <div class="result-emoji" id="resultEmoji">🏆</div>
+                <h1>Quiz Complete!</h1>
+                
+                <div class="circular-progress">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                        <circle id="progressCircle" cx="100" cy="100" r="90" class="progress-bar-circle"></circle>
+                    </svg>
+                    <div class="percentage" id="percentageText">0%</div>
+                </div>
+                
+                <div class="final-score">
+                    <h2>Your Score</h2>
+                    <p id="finalScore" class="score-text">0/24</p>
+                </div>
+                
+                <div class="result-message">
+                    <h2 id="resultTitle"></h2>
+                    <p id="resultMessage"></p>
+                </div>
+                
+                <div class="result-stats">
+                    <div class="stat-box correct-stats">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-number" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-box wrong-stats">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-number" id="wrongAnswers">0</div>
+                        <div class="stat-label">Wrong</div>
+                    </div>
+                </div>
+                
+                <button id="restartBtn" class="restart-btn">
+                    <span>🔄 Try Again</span>
+                </button>
+                <button id="backToUnitFromResults" class="change-subject-btn">
+                    <span>← Back to Unit 2</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="idgham-script.js"></script>
+</body>
+</html>

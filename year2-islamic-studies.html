@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2 Islamic Studies - All Lessons</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .lesson-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .lesson-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .lesson-card.locked:hover {
+            transform: none;
+        }
+        
+        .lesson-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .lesson-emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .lesson-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .lesson-description {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .lesson-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #ecf0f1;
+        }
+        
+        .lesson-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .lesson-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .lesson-badge.coming-soon {
+            background: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="lessonsScreen" class="screen active">
+            <div class="subject-selection-box">
+                <div class="main-icon">🎮</div>
+                <h1 style="font-size: 2.5em; font-weight: 800; color: #2c3e50; margin: 15px 0;">Islamic Studies</h1>
+                <p class="subtitle">Year 2 – Term 1 – Fun Kahoot-Style Lessons!</p>
+                
+                <div class="lessons-grid">
+                    <!-- Lesson 1: We Are Muslims -->
+                    <div class="lesson-card" onclick="window.location.href='year2-kahoot.html'">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-emoji">🌟</div>
+                        <h3 class="lesson-title">We Are Muslims</h3>
+                        <p class="lesson-description">Learn about Allah, the Qur'an, Prophet Muhammad ﷺ, and being kind!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 12 Questions</div>
+                            <div class="lesson-stat">⭐ 120 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 2: Our Holy Book -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson2-quran.html'">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-emoji">📖</div>
+                        <h3 class="lesson-title">Our Holy Book</h3>
+                        <p class="lesson-description">Discover the Qur'an, Angel Jibrīl, Arabic language, and more!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 3: Young Muhammad and Halimah -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson3-muhammad-halimah.html'">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-emoji">🌙</div>
+                        <h3 class="lesson-title">Young Muhammad ﷺ</h3>
+                        <p class="lesson-description">Learn about baby Muhammad ﷺ, Halīmah's care, and amazing miracles!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 4: More About Allah -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson4-allah-names.html'">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-emoji">✨</div>
+                        <h3 class="lesson-title">More About Allah ﷻ</h3>
+                        <p class="lesson-description">Learn Allah's beautiful names: Ar-Rahmān, Ar-Rahīm, Al-Malik, Al-Khāliq!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 5: Spreading Salam -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson5-salam.html'">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-emoji">�</div>
+                        <h3 class="lesson-title">Spreading Salām</h3>
+                        <p class="lesson-description">Learn about ḥadīth, Islamic greetings, and saying Assalāmu 'alaikum!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 6: Small Daily Duʿās -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson6-duas.html'">
+                        <div class="lesson-number">6</div>
+                        <div class="lesson-emoji">🤲</div>
+                        <h3 class="lesson-title">Small Daily Duʿās</h3>
+                        <p class="lesson-description">Learn beautiful duʿās like Bismillāh, Inshā'Allāh, and Alhamdulillāh!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 12 Questions</div>
+                            <div class="lesson-stat">⭐ 120 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 7: Prophet Ibrāhīm (AS) -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson7-ibrahim.html'">
+                        <div class="lesson-number">7</div>
+                        <div class="lesson-emoji">🕌</div>
+                        <h3 class="lesson-title">Prophet Ibrāhīm (AS): Khalīl Allāh</h3>
+                        <p class="lesson-description">Learn about the Friend of Allāh, the fire miracle, Zamzam, and building the Ka'bah!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 15 Questions</div>
+                            <div class="lesson-stat">⭐ 150 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 8: Islām - Complete Way of Life -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson8-islam.html'">
+                        <div class="lesson-number">8</div>
+                        <div class="lesson-emoji">🌍</div>
+                        <h3 class="lesson-title">Islām: The Complete Way of Life</h3>
+                        <p class="lesson-description">Learn how Islam guides us in everything we do, from worship to caring for our planet!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 9: The Importance of Friday -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson9-friday.html'">
+                        <div class="lesson-number">9</div>
+                        <div class="lesson-emoji">🕌</div>
+                        <h3 class="lesson-title">The Importance of Friday</h3>
+                        <p class="lesson-description">Learn about Jumu'ah, the best day of the week, and the special hour for duʿā!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 10: The Five Pillars of Islām -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson10-pillars.html'">
+                        <div class="lesson-number">10</div>
+                        <div class="lesson-emoji">🕌</div>
+                        <h3 class="lesson-title">The Five Pillars of Islām</h3>
+                        <p class="lesson-description">Learn about the five strong pillars that hold up our beautiful religion!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 12 Questions</div>
+                            <div class="lesson-stat">⭐ 120 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 11: Abū Bakr (RA) - As-Siddīq -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson11-abubakar.html'">
+                        <div class="lesson-number">11</div>
+                        <div class="lesson-emoji">⭐</div>
+                        <h3 class="lesson-title">Abū Bakr (RA): As-Siddīq</h3>
+                        <p class="lesson-description">Learn about the Prophet's best friend - the truthful, kind, and generous companion!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 15 Questions</div>
+                            <div class="lesson-stat">⭐ 150 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 12: Keeping Clean - FINAL LESSON! -->
+                    <div class="lesson-card" onclick="window.location.href='year2-lesson12-clean.html'">
+                        <div class="lesson-number">12</div>
+                        <div class="lesson-emoji">🧼</div>
+                        <h3 class="lesson-title">Keeping Clean</h3>
+                        <p class="lesson-description">Learn about wudū', bathroom manners, and cleanliness in faith!</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 10 Questions</div>
+                            <div class="lesson-stat">⭐ 100 Stars</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="window.location.href='year2-term1.html'" class="back-btn" style="margin-top: 30px;">← Back to Subjects</button>
+                <p class="encouragement">Learn and have fun! Bismillah! 💪</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

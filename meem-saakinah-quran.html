@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: Meem Sākinah Quiz - Year 6 Tajweed</title>
+    <link rel="stylesheet" href="meem-saakinah-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="welcome-box">
+                <div class="main-icon">🗣️</div>
+                <h1>Unit 5: Meem Sākinah</h1>
+                <h2 style="font-size: 2em; color: #6a11cb; font-family: 'Amiri Quran', serif;">ميم ساكنة</h2>
+                <p class="subtitle">✨ Master the Rules of Meem with Sukoon! ✨</p>
+                
+                <div class="unit-badge">
+                    <span style="font-size: 1.1em;">Focus: 3 Rules of Meem Sākinah (مْ)</span>
+                </div>
+                
+                <div class="rules-display">
+                    <h3 style="color: #6a11cb; margin-bottom: 20px;">The 3 Rules (Shafawi)</h3>
+                    
+                    <div class="rule-card">
+                        <div class="rule-number">1</div>
+                        <div class="rule-content">
+                            <h4>Idghām Shafawi</h4>
+                            <p class="arabic-text">إدغام شفوي</p>
+                            <p class="rule-desc">Meem + Meem = Merge with ghunnah</p>
+                            <p class="rule-letter">مْ + <span class="meem-letter">م</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">2</div>
+                        <div class="rule-content">
+                            <h4>Ikhfāʾ Shafawi</h4>
+                            <p class="arabic-text">إخفاء شفوي</p>
+                            <p class="rule-desc">Hide before Baa with ghunnah</p>
+                            <p class="rule-letter">مْ + <span class="baa-letter">ب</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">3</div>
+                        <div class="rule-content">
+                            <h4>Idh-hār Shafawi</h4>
+                            <p class="arabic-text">إظهار شفوي</p>
+                            <p class="rule-desc">Clear pronunciation (all other letters)</p>
+                            <p class="rule-letter">مْ + <span class="other-letters">26 letters</span></p>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.95em; color: #777; margin-top: 20px; font-style: italic;">
+                        "Shafawi" means "from the lips" (شفة)
+                    </p>
+                </div>
+                
+                <div class="quiz-info">
+                    <div class="info-item">
+                        <span class="info-icon">📝</span>
+                        <span>25 Questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>No time limit</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🎯</span>
+                        <span>Learn as you go!</span>
+                    </div>
+                </div>
+
+                <button id="startBtn" class="start-btn">🚀 Start Learning</button>
+                <button id="backToUnit" class="back-btn">← Back to Unit 5</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-box">
+                <div class="progress-section">
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-header-info">
+                        <span id="questionNumber" class="question-counter">Question 1 of 48</span>
+                        <span id="scoreDisplay" class="score">Score: 0/48</span>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <h2 id="questionText" class="question"></h2>
+                </div>
+
+                <div id="answersContainer" class="answers-grid"></div>
+
+                <div id="explanation" class="explanation-box" style="display: none;"></div>
+
+                <button id="nextBtn" class="next-btn" style="display: none;">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-box">
+                <h1 class="results-title">🎊 Quiz Complete! 🎊</h1>
+                
+                <div class="final-score-display">
+                    <div class="score-big">
+                        <span id="finalScore">0</span>/<span>48</span>
+                    </div>
+                    <div class="percentage-big" id="percentage">0%</div>
+                </div>
+
+                <p id="performanceMessage" class="performance-text"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-card correct">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card incorrect">
+                        <div class="stat-icon">✗</div>
+                        <div class="stat-value" id="incorrectAnswers">0</div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
+                    <div class="stat-card accuracy">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="accuracy">0%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+
+                <div class="results-buttons">
+                    <button id="retryBtn" class="retry-btn">🔄 Try Again</button>
+                    <button id="backToUnits" class="back-units-btn">← Back to Unit 5</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="meem-saakinah-script.js"></script>
+</body>
+</html>

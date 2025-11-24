@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 6 Term 1 - Islamic Studies, Qur'an & Arabic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Subject Selection Screen -->
+        <div id="subjectScreen" class="screen active">
+            <div class="subject-selection-box">
+                <div class="main-icon">📚</div>
+                <h1 style="font-size: 2.5em; font-weight: 800; color: #2c3e50; margin: 15px 0;">Year 6 - Term 1</h1>
+                <h2 style="font-size: 1.8em; margin: 10px 0; color: #667eea; font-weight: 600;">Islamic Studies • Qur'an • Arabic</h2>
+                <p class="subtitle">✨ Choose your subject to begin! ✨</p>
+                
+                <div class="subject-cards">
+                    <div class="subject-card" data-subject="islamic-studies">
+                        <div class="subject-icon">🕌</div>
+                        <h3>Islamic Studies</h3>
+                        <p class="subject-desc">45 questions covering Tawheed, Shirk, Shariah Law, and more!</p>
+                        <div class="subject-topics">
+                            <span class="mini-pill">Tawheed</span>
+                            <span class="mini-pill">Shirk</span>
+                            <span class="mini-pill">Shariah Law</span>
+                        </div>
+                        <button class="select-btn" onclick="window.location.href='islamic-studies.html'">Start Quiz 🚀</button>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="quran">
+                        <div class="subject-icon">📖</div>
+                        <h3>Qur'an</h3>
+                        <p class="subject-desc">Learn Tajweed rules & test your Qur'anic knowledge!</p>
+                        <div class="subject-topics">
+                            <span class="mini-pill">5 Units</span>
+                            <span class="mini-pill">Tajweed</span>
+                            <span class="mini-pill">All Rules</span>
+                        </div>
+                        <button class="select-btn" onclick="window.location.href='quran-units.html'">View All Units 🚀</button>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="arabic">
+                        <div class="subject-icon">✍️</div>
+                        <h3>Arabic Studies</h3>
+                        <p class="subject-desc">Learn 31 Quranic words with 3 fun modes!</p>
+                        <div class="subject-topics">
+                            <span class="mini-pill">Read Mode</span>
+                            <span class="mini-pill">Meaning Mode</span>
+                            <span class="mini-pill">Write Mode</span>
+                        </div>
+                        <button class="select-btn" onclick="window.location.href='arabic-studies.html'">Start Learning 🚀</button>
+                    </div>
+                </div>
+                
+                <button onclick="window.location.href='home.html'" class="back-btn" style="margin-top: 20px;">← Back to Year Selection</button>
+                <p class="encouragement">You can do this! Bismillah! 💪</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

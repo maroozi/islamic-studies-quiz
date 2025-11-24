@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Studies - Year 6 Term 1 - Learn Quranic Words</title>
+    <link rel="stylesheet" href="arabic-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mode Selection Screen -->
+        <div id="modeScreen" class="screen active">
+            <div class="mode-selection-box">
+                <div class="main-icon">📖</div>
+                <h1>✨ Year 6 Term 1 Arabic Studies ✨</h1>
+                <h2>Learn 31 Quranic Words</h2>
+                <p class="subtitle">Choose your learning mode!</p>
+                
+                <div class="progress-display">
+                    <div class="progress-icon">🌟</div>
+                    <div class="progress-text">
+                        <span id="wordsLearned">0</span> / 31 Words Learned
+                    </div>
+                </div>
+                
+                <div class="mode-cards">
+                    <div class="mode-card" data-mode="read">
+                        <div class="mode-icon">👁️</div>
+                        <h3>Read Mode</h3>
+                        <p class="mode-desc">Practice reading Arabic words. See if you can read each word!</p>
+                        <button class="mode-btn">Start Reading 📚</button>
+                    </div>
+                    
+                    <div class="mode-card" data-mode="meaning">
+                        <div class="mode-icon">💡</div>
+                        <h3>Meaning Mode</h3>
+                        <p class="mode-desc">Test your knowledge! Choose the correct meaning from 4 options.</p>
+                        <button class="mode-btn">Learn Meanings 🎯</button>
+                    </div>
+                    
+                    <div class="mode-card" data-mode="spell">
+                        <div class="mode-icon">✍️</div>
+                        <h3>Write Mode</h3>
+                        <p class="mode-desc">See the English meaning and write the Arabic word with your finger, pen, or mouse!</p>
+                        <button class="mode-btn">Practice Writing ✨</button>
+                    </div>
+                </div>
+                
+                <button id="backToMainBtn" class="back-to-main-btn">← Back to Home</button>
+            </div>
+        </div>
+
+        <!-- Read Mode Screen -->
+        <div id="readScreen" class="screen">
+            <div class="learn-header">
+                <div class="header-info">
+                    <button id="readBackBtn" class="back-mode-btn">← Back to Modes</button>
+                    <div class="score-badge">
+                        <span class="star-icon">⭐</span>
+                        <span id="readScore">0</span>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <span id="readProgress">Word 1 of 31</span>
+                    <span id="readPercent">3%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="readProgressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="learn-content">
+                <h2 class="mode-title">📚 Read Mode</h2>
+                <p class="instruction">Can you read this Arabic word?</p>
+                
+                <div class="arabic-word-display">
+                    <button id="playAudio" class="audio-btn" title="Play Audio">🔊</button>
+                    <div id="arabicWord" class="arabic-word"></div>
+                </div>
+                
+                <div class="read-buttons">
+                    <button id="canReadBtn" class="read-btn can-read">
+                        <span class="btn-icon">✅</span>
+                        <span>I can read this!</span>
+                    </button>
+                    <button id="needHelpBtn" class="read-btn need-help">
+                        <span class="btn-icon">🤔</span>
+                        <span>I need help</span>
+                    </button>
+                </div>
+
+                <div id="readFeedback" class="feedback hidden">
+                    <div id="readFeedbackEmoji" class="feedback-emoji"></div>
+                    <p id="readFeedbackText"></p>
+                    <div class="explanation-card">
+                        <div class="explanation-icon">💡</div>
+                        <div class="explanation-content">
+                            <p class="explanation-label">Meaning:</p>
+                            <p id="wordMeaning" class="explanation-meaning"></p>
+                            <p id="wordNote" class="explanation-note"></p>
+                        </div>
+                    </div>
+                    <button id="readNextBtn" class="next-btn">
+                        <span id="readNextText">Next Word</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meaning Mode Screen -->
+        <div id="meaningScreen" class="screen">
+            <div class="learn-header">
+                <div class="header-info">
+                    <button id="meaningBackBtn" class="back-mode-btn">← Back to Modes</button>
+                    <div class="score-badge">
+                        <span class="star-icon">⭐</span>
+                        <span id="meaningScore">0</span>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <span id="meaningProgress">Word 1 of 31</span>
+                    <span id="meaningPercent">3%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="meaningProgressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="learn-content">
+                <h2 class="mode-title">💡 Meaning Mode</h2>
+                <p class="instruction">What does this word mean?</p>
+                
+                <div class="arabic-word-display">
+                    <button id="meaningPlayAudio" class="audio-btn" title="Play Audio">🔊</button>
+                    <div id="meaningArabicWord" class="arabic-word"></div>
+                </div>
+                
+                <div id="meaningAnswersContainer" class="answers-container">
+                    <!-- Answer buttons will be inserted here -->
+                </div>
+
+                <div id="meaningFeedback" class="feedback hidden">
+                    <div id="meaningFeedbackEmoji" class="feedback-emoji"></div>
+                    <p id="meaningFeedbackText"></p>
+                    <div class="explanation-card">
+                        <div class="explanation-icon">💡</div>
+                        <div class="explanation-content">
+                            <p class="explanation-label">Explanation:</p>
+                            <p id="meaningExplanation" class="explanation-meaning"></p>
+                            <p id="meaningNote" class="explanation-note"></p>
+                        </div>
+                    </div>
+                    <button id="meaningNextBtn" class="next-btn">
+                        <span id="meaningNextText">Next Word</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Write Mode Screen -->
+        <div id="spellScreen" class="screen">
+            <div class="learn-header">
+                <div class="header-info">
+                    <button id="spellBackBtn" class="back-mode-btn">← Back to Modes</button>
+                    <div class="score-badge">
+                        <span class="star-icon">⭐</span>
+                        <span id="spellScore">0</span>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <span id="spellProgress">Word 1 of 31</span>
+                    <span id="spellPercent">3%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="spellProgressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="learn-content">
+                <h2 class="mode-title">✍️ Write Mode</h2>
+                <p class="instruction">Write the Arabic word for:</p>
+                
+                <div class="english-meaning-display">
+                    <div id="englishMeaning" class="english-meaning"></div>
+                </div>
+                
+                <div class="canvas-container">
+                    <div class="canvas-instructions">
+                        <span class="instruction-icon">👆</span>
+                        <span>Use your finger, mouse, or pen to write the Arabic word</span>
+                    </div>
+                    <canvas id="drawingCanvas" class="drawing-canvas"></canvas>
+                    <div class="canvas-controls">
+                        <button id="clearCanvas" class="canvas-btn clear-btn">
+                            <span class="btn-icon">🗑️</span>
+                            <span>Clear</span>
+                        </button>
+                        <button id="submitDrawing" class="canvas-btn submit-btn">
+                            <span class="btn-icon">✓</span>
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                    <div class="drawing-tools">
+                        <label class="tool-label">Brush Size:</label>
+                        <input type="range" id="brushSize" min="2" max="20" value="8" class="brush-slider">
+                        <span id="brushSizeValue" class="size-value">8px</span>
+                    </div>
+                </div>
+
+                <div id="spellFeedback" class="feedback hidden">
+                    <div id="spellFeedbackEmoji" class="feedback-emoji"></div>
+                    <p id="spellFeedbackText"></p>
+                    <div class="answer-reveal">
+                        <p class="reveal-label">The correct word is:</p>
+                        <div id="correctArabicWord" class="correct-word-display"></div>
+                    </div>
+                    <div class="explanation-card">
+                        <div class="explanation-icon">💡</div>
+                        <div class="explanation-content">
+                            <p class="explanation-label">Details:</p>
+                            <p id="spellExplanation" class="explanation-meaning"></p>
+                            <p id="spellNote" class="explanation-note"></p>
+                        </div>
+                    </div>
+                    <button id="spellNextBtn" class="next-btn">
+                        <span id="spellNextText">Next Word</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-box">
+                <div class="confetti">
+                    <div class="confetti-piece">🎉</div>
+                    <div class="confetti-piece">⭐</div>
+                    <div class="confetti-piece">✨</div>
+                    <div class="confetti-piece">🌟</div>
+                    <div class="confetti-piece">💫</div>
+                    <div class="confetti-piece">🎊</div>
+                </div>
+                
+                <h1 class="results-title">Session Complete!</h1>
+                <div id="resultEmoji" class="result-emoji">🏆</div>
+                
+                <div class="score-circle">
+                    <svg class="circular-progress" width="220" height="220">
+                        <circle class="bg-circle" cx="110" cy="110" r="100"></circle>
+                        <circle id="progressCircle" class="progress-circle" cx="110" cy="110" r="100"></circle>
+                    </svg>
+                    <div class="score-content">
+                        <div id="percentageText" class="percentage">0%</div>
+                        <div id="finalScore" class="score-text">0/31</div>
+                    </div>
+                </div>
+                
+                <div class="result-message">
+                    <h2 id="resultTitle"></h2>
+                    <p id="resultMessage"></p>
+                </div>
+                
+                <div class="result-stats">
+                    <div class="stat-box correct-stats">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-number" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-box wrong-stats">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-number" id="wrongAnswers">0</div>
+                        <div class="stat-label">Wrong</div>
+                    </div>
+                </div>
+                
+                <div class="result-buttons">
+                    <button id="tryAgainBtn" class="restart-btn">🔄 Try Again</button>
+                    <button id="changeModeBtn" class="change-mode-btn">📚 Choose Different Mode</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="arabic-script.js"></script>
+</body>
+</html>
