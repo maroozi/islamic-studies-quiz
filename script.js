@@ -909,11 +909,11 @@ function showResults() {
     } else if (percentage >= 60) {
         resultTitle.textContent = "Good Job! 👍";
         resultMessage.textContent = "You're learning well! Keep studying!";
-        resultEmoji.textContent = '�';
+        resultEmoji.textContent = '😊';
     } else if (percentage >= 40) {
         resultTitle.textContent = "Nice Try! 💫";
         resultMessage.textContent = "Review your notes and try again!";
-        resultEmoji.textContent = '�';
+        resultEmoji.textContent = '📖';
     } else {
         resultTitle.textContent = "Keep Going! 🌙";
         resultMessage.textContent = "Practice makes perfect! You can do it!";
