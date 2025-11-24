@@ -301,6 +301,20 @@ body {
     animation: questionPop 0.5s ease-out;
 }
 
+.question-topic {
+    display: block;
+    font-size: 0.5em;
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    padding: 8px 15px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
 @keyframes questionPop {
     0% { transform: scale(0.9); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }

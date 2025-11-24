@@ -564,6 +564,16 @@ startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
 
+// Shuffle array function (Fisher-Yates algorithm)
+function shuffleArray(array) {
+    const shuffled = [...array]; // Create a copy
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 // Start Quiz
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -588,8 +598,8 @@ function showQuestion() {
     progressFill.style.width = progress + '%';
     progressPercent.textContent = Math.round(progress) + '%';
     
-    // Display question with animation
-    questionText.textContent = question.question;
+    // Display question with topic context
+    questionText.innerHTML = `<span class="question-topic">📖 ${question.topic}</span><br>${question.question}`;
     questionText.style.animation = 'none';
     setTimeout(() => {
         questionText.style.animation = 'questionPop 0.5s ease-out';
@@ -607,8 +617,11 @@ function showQuestion() {
         nextBtnText.textContent = 'Next Question';
     }
     
+    // Shuffle answers so correct answer isn't always first
+    const shuffledAnswers = shuffleArray(question.answers);
+    
     // Create answer buttons with staggered animation
-    question.answers.forEach((answer, index) => {
+    shuffledAnswers.forEach((answer, index) => {
         const button = document.createElement('button');
         button.classList.add('answer-btn');
         button.textContent = answer.text;
