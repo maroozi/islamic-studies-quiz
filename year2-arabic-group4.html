@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Year 2 Arabic Letters - Group 4</title>
+    <title>Year 2: Arabic Letters - Group 4</title>
     <link rel="stylesheet" href="year2-kahoot-style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Make Arabic letters bigger and more visible */
         .question-text {
             font-size: 3rem !important;
             line-height: 1.4 !important;
         }
+        
+        /* Make Arabic letters in topic bubbles bigger too */
         .bubble-emoji {
             font-size: 2.5rem !important;
         }
     </style>
 </head>
 <body>
-    <!-- Start Screen -->
-    <div class="start-content" id="startContent">
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
         <div class="title-section">
             <h1 class="game-title">🔤 Arabic Letters - Group 4!</h1>
             <p class="subtitle">Year 2 – Arabic Term 1</p>
@@ -49,89 +52,98 @@
             </div>
         </div>
 
-        <div class="game-info">
-            <div class="info-card">
-                <span class="info-emoji">📝</span>
-                <span class="info-text">25 Questions</span>
-            </div>
-            <div class="info-card">
-                <span class="info-emoji">🎯</span>
-                <span class="info-text">Earn Stars!</span>
-            </div>
-            <div class="info-card">
-                <span class="info-emoji">🏆</span>
-                <span class="info-text">Complete Alphabet!</span>
-            </div>
-        </div>
-
-        <button id="startButton" class="start-button">
-            <span class="button-text">🚀 Let's Play!</span>
-        </button>
-        
-        <button id="backButton" class="back-button">← Back to Groups</button>
-    </div>
-
-    <!-- Quiz Container -->
-    <div class="quiz-container" id="quizContainer" style="display: none;">
-        <div class="quiz-header">
-            <div class="progress-section">
-                <span class="question-count">Question <span id="currentQuestion">1</span>/<span id="totalQuestions">25</span></span>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-
-        <div class="question-container">
-            <div class="question-box">
-                <h2 class="question-text" id="question">Question appears here</h2>
-            </div>
-
-            <div class="answers-grid" id="answersGrid">
-                <!-- Answer buttons will be generated here -->
-            </div>
-        </div>
-
-        <div class="feedback-container">
-            <p class="feedback-message" id="feedback" style="display: none;">Feedback appears here</p>
-            <button class="next-button" id="nextButton" style="display: none;">Next Question →</button>
-        </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div class="results-container" id="resultsContainer" style="display: none;">
-        <div class="results-content">
-            <div class="results-header">
-                <h2>Quiz Complete! 🎉</h2>
-                <div class="stars-earned" id="stars">⭐⭐⭐</div>
-            </div>
-
-            <div class="score-details">
-                <div class="score-circle">
-                    <div class="score-number" id="score">0/25</div>
-                    <div class="score-label">Score</div>
+                <div class="game-info">
+                    <div class="info-card">
+                        <span class="info-emoji">📝</span>
+                        <span class="info-text">25 Questions</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">🎯</span>
+                        <span class="info-text">Earn Stars!</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">🏆</span>
+                        <span class="info-text">Complete Alphabet!</span>
+                    </div>
                 </div>
 
-                <div class="stats-grid">
-                    <div class="stat-item correct">
-                        <div class="stat-number" id="correctAnswers">0</div>
-                        <div class="stat-label">Correct</div>
+                <button id="startBtn" class="start-button">
+                    <span class="button-text">🚀 Let's Play!</span>
+                </button>
+                
+                <button id="backBtn" class="back-button">← Back to Lessons</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-section">
+                    <div class="question-counter">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">25</span>
                     </div>
-                    <div class="stat-item wrong">
-                        <div class="stat-number" id="wrongAnswers">0</div>
-                        <div class="stat-label">Wrong</div>
+                    <div class="star-display">
+                        <span id="stars">⭐ 0</span>
                     </div>
-                    <div class="stat-item percentage">
-                        <div class="stat-number"><span id="percentage">0</span>%</div>
-                        <div class="stat-label">Score</div>
-                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
                 </div>
             </div>
 
-            <div class="result-actions">
-                <button class="retry-button" id="retryButton">🔄 Try Again</button>
-                <button class="review-button" id="reviewMistakesBtn" style="display: none;">📝 Review Mistakes</button>
-                <button class="lessons-button" id="lessonsButton">← Back to Groups</button>
+            <div class="question-container">
+                <div class="question-box">
+                    <h2 id="questionText" class="question-text"></h2>
+                </div>
+
+                <div id="answersGrid" class="answers-grid">
+                    <!-- Kahoot-style colored answer buttons will be inserted here -->
+                </div>
+            </div>
+
+            <div id="feedback" class="feedback-container">
+                <div class="feedback-content">
+                    <span id="feedbackEmoji" class="feedback-emoji"></span>
+                    <p id="feedbackText" class="feedback-text"></p>
+                    <div id="explanation" class="explanation"></div>
+                </div>
+                <button id="nextBtn" class="next-button">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-content">
+                <div class="results-header">
+                    <div class="trophy-emoji">�</div>
+                    <h1 class="results-title">Amazing Work!</h1>
+                </div>
+
+                <div class="stars-earned">
+                    <div class="stars-display-big">
+                        <span id="totalStars">0</span> ⭐
+                    </div>
+                    <p class="stars-label">Stars Earned!</p>
+                </div>
+
+                <div class="score-details">
+                    <div class="score-card">
+                        <div class="score-number" id="correctCount">0</div>
+                        <div class="score-label">✅ Correct</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-number" id="incorrectCount">0</div>
+                        <div class="score-label">❌ Try Again</div>
+                    </div>
+                </div>
+
+                <div id="resultMessage" class="result-message"></div>
+
+                <div class="result-actions">
+                    <button id="reviewMistakesBtn" class="review-button" style="display: none;">� Review Mistakes</button>
+                    <button id="retryBtn" class="retry-button">� Play Again</button>
+                    <button id="backToLessonsBtn" class="lessons-button">📚 More Lessons</button>
+                </div>
             </div>
         </div>
     </div>

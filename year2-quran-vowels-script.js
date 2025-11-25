@@ -8,92 +8,92 @@ const questions = [
     },
     {
         question: "Which vowel is on بِ ?",
-        answers: ["Kasrah", "Fatḥah", "Ḍammah", "Shaddah"],
-        correctIndex: 0,
+        answers: ["Ḍammah", "Kasrah", "Fatḥah", "Shaddah"],
+        correctIndex: 1,
         explanation: "Kasrah is the small line below the letter."
     },
     {
         question: "Which vowel is on بُ ?",
-        answers: ["Ḍammah", "Fatḥah", "Kasrah", "Sukoon"],
-        correctIndex: 0,
+        answers: ["Kasrah", "Sukoon", "Ḍammah", "Fatḥah"],
+        correctIndex: 2,
         explanation: "Ḍammah is the small curl above the letter."
     },
     {
         question: "How do we pronounce جَ ?",
-        answers: ["Ja", "Ji", "Ju", "Joo"],
-        correctIndex: 0,
+        answers: ["Joo", "Ju", "Ji", "Ja"],
+        correctIndex: 3,
         explanation: "Fatḥah makes the short 'a' sound."
     },
     {
         question: "How do we pronounce جِ ?",
-        answers: ["Ji", "Ja", "Ju", "Jee"],
+        answers: ["Ji", "Jee", "Ju", "Ja"],
         correctIndex: 0,
         explanation: "Kasrah gives the short 'i' sound."
     },
     {
         question: "How do we pronounce جُ ?",
-        answers: ["Ju", "Ji", "Ja", "Joo"],
-        correctIndex: 0,
+        answers: ["Joo", "Ju", "Ji", "Ja"],
+        correctIndex: 1,
         explanation: "Ḍammah gives the round 'u' sound."
     },
     {
         question: "What sound does فَ make?",
-        answers: ["Fa", "Fi", "Fu", "Faa"],
-        correctIndex: 0,
+        answers: ["Fi", "Faa", "Fa", "Fu"],
+        correctIndex: 2,
         explanation: "A line above makes the sound 'a'."
     },
     {
         question: "What sound does فِ make?",
-        answers: ["Fi", "Fa", "Fu", "Fee"],
-        correctIndex: 0,
+        answers: ["Fa", "Fee", "Fu", "Fi"],
+        correctIndex: 3,
         explanation: "A line below makes the sound 'i'."
     },
     {
         question: "What sound does فُ make?",
-        answers: ["Fu", "Fa", "Fi", "Foo"],
+        answers: ["Fu", "Fa", "Foo", "Fi"],
         correctIndex: 0,
         explanation: "Ḍammah gives the 'u' sound."
     },
     {
         question: "Which of these has a Kasrah?",
-        answers: ["سِ", "سَ", "سُ", "سْ"],
-        correctIndex: 0,
+        answers: ["سَ", "سِ", "سُ", "سْ"],
+        correctIndex: 1,
         explanation: "Kasrah always goes below the letter."
     },
     {
         question: "Which of these has a Dhammah?",
-        answers: ["قُ", "قَ", "قِ", "قْ"],
-        correctIndex: 0,
+        answers: ["قَ", "قْ", "قُ", "قِ"],
+        correctIndex: 2,
         explanation: "Ḍammah is a small curl on top."
     },
     {
         question: "Which of these has a Fatḥah?",
-        answers: ["نَ", "نِ", "نُ", "نْ"],
-        correctIndex: 0,
+        answers: ["نْ", "نُ", "نِ", "نَ"],
+        correctIndex: 3,
         explanation: "Fatḥah is the line above the letter."
     },
     {
         question: "Which sound matches هُ ?",
-        answers: ["Hu", "Ha", "Hi", "Haa"],
+        answers: ["Hu", "Haa", "Hi", "Ha"],
         correctIndex: 0,
         explanation: "Ḍammah makes the rounded 'u'."
     },
     {
         question: "Which sound matches هِ ?",
-        answers: ["Hi", "Ha", "Hu", "Hee"],
-        correctIndex: 0,
+        answers: ["Hu", "Hi", "Ha", "Hee"],
+        correctIndex: 1,
         explanation: "Kasrah makes the 'i' sound."
     },
     {
         question: "Which sound matches هَ ?",
-        answers: ["Ha", "Hi", "Hu", "Ho"],
-        correctIndex: 0,
+        answers: ["Hi", "Hu", "Ha", "Ho"],
+        correctIndex: 2,
         explanation: "Fatḥah makes the 'a' sound."
     },
     {
         question: "Which vowel makes the 'u' sound?",
-        answers: ["Ḍammah (ُ)", "Fatḥah (َ)", "Kasrah (ِ)", "No vowel"],
-        correctIndex: 0,
+        answers: ["Fatḥah (َ)", "Kasrah (ِ)", "No vowel", "Ḍammah (ُ)"],
+        correctIndex: 3,
         explanation: "Ḍammah creates the 'u' sound like fu, ru, zu."
     },
     {
@@ -104,20 +104,20 @@ const questions = [
     },
     {
         question: "Which vowel makes the 'a' sound?",
-        answers: ["Fatḥah (َ)", "Kasrah (ِ)", "Ḍammah (ُ)", "Sukoon"],
-        correctIndex: 0,
+        answers: ["Kasrah (ِ)", "Fatḥah (َ)", "Ḍammah (ُ)", "Sukoon"],
+        correctIndex: 1,
         explanation: "Fatḥah gives the short 'a' sound."
     },
     {
         question: "Which letter has Dhammah? (Choose correctly)",
-        answers: ["طُ", "طَ", "طِ", "طْ"],
-        correctIndex: 0,
+        answers: ["طَ", "طِ", "طُ", "طْ"],
+        correctIndex: 2,
         explanation: "The curl above means Ḍammah."
     },
     {
         question: "Which letter has Kasrah? (Choose correctly)",
-        answers: ["يِ", "يَ", "يُ", "يْ"],
-        correctIndex: 0,
+        answers: ["يَ", "يُ", "يْ", "يِ"],
+        correctIndex: 3,
         explanation: "Kasrah is under the letter."
     },
     {
@@ -128,20 +128,20 @@ const questions = [
     },
     {
         question: "Which one sounds like 'su'?",
-        answers: ["سُ", "سَ", "سِ", "شُ"],
-        correctIndex: 0,
+        answers: ["سَ", "سُ", "سِ", "شُ"],
+        correctIndex: 1,
         explanation: "The dhammah makes the 'u' sound."
     },
     {
         question: "Which one sounds like 'ri'?",
-        answers: ["رِ", "رَ", "رُ", "زِ"],
-        correctIndex: 0,
+        answers: ["رَ", "زِ", "رِ", "رُ"],
+        correctIndex: 2,
         explanation: "Kasrah makes the letter sound like 'ri'."
     },
     {
         question: "Which one sounds like 'tha'?",
-        answers: ["ثَ", "ثِ", "ثُ", "سَ"],
-        correctIndex: 0,
+        answers: ["ثِ", "سَ", "ثُ", "ثَ"],
+        correctIndex: 3,
         explanation: "Fatḥah gives the 'a' sound to letter ث."
     },
     {
@@ -152,240 +152,214 @@ const questions = [
     },
     {
         question: "How do we pronounce شَ ?",
-        answers: ["Sha", "Shi", "Shu", "Sho"],
-        correctIndex: 0,
+        answers: ["Shi", "Sha", "Shu", "Sho"],
+        correctIndex: 1,
         explanation: "Fatḥah gives 'a'."
     },
     {
         question: "How do we pronounce شِ ?",
-        answers: ["Shi", "Sha", "Shu", "Shee"],
-        correctIndex: 0,
+        answers: ["Sha", "Shu", "Shi", "Shee"],
+        correctIndex: 2,
         explanation: "Kasrah gives 'i'."
     }
 ];
 
 // DOM Elements
-const startButton = document.getElementById('startButton');
-const backButton = document.getElementById('backButton');
-const nextButton = document.getElementById('nextButton');
-const retryButton = document.getElementById('retryButton');
+const startScreen = document.getElementById('startScreen');
+const quizScreen = document.getElementById('quizScreen');
+const resultsScreen = document.getElementById('resultsScreen');
+
+const startBtn = document.getElementById('startBtn');
+const backBtn = document.getElementById('backBtn');
+const nextBtn = document.getElementById('nextBtn');
+const retryBtn = document.getElementById('retryBtn');
 const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
-const lessonsButton = document.getElementById('lessonsButton');
+const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
-const startContent = document.getElementById('startContent');
-const quizContainer = document.getElementById('quizContainer');
-const resultsContainer = document.getElementById('resultsContainer');
-
-const questionElement = document.getElementById('question');
+const questionText = document.getElementById('questionText');
 const answersGrid = document.getElementById('answersGrid');
-const feedback = document.getElementById('feedback');
-const currentQuestionSpan = document.getElementById('currentQuestion');
-const totalQuestionsSpan = document.getElementById('totalQuestions');
-const progressBar = document.getElementById('progressBar');
-const stars = document.getElementById('stars');
-const score = document.getElementById('score');
-const correctAnswersSpan = document.getElementById('correctAnswers');
-const wrongAnswersSpan = document.getElementById('wrongAnswers');
-const percentageSpan = document.getElementById('percentage');
+const feedbackEmoji = document.getElementById('feedbackEmoji');
+const feedbackText = document.getElementById('feedbackText');
+const explanation = document.getElementById('explanation');
+
+const questionCounter = document.getElementById('question-counter');
+const starsDisplay = document.getElementById('star-display');
+
+const totalStars = document.getElementById('totalStars');
+const correctCount = document.getElementById('correctCount');
+const incorrectCount = document.getElementById('incorrectCount');
+const resultMessage = document.getElementById('resultMessage');
 
 // Game State
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
-let wrongAnswers = [];
-let shuffledQuestions = [];
-let isReviewMode = false;
+let wrongAnswers = 0;
+let userAnswers = [];
+let reviewMode = false;
 let reviewQuestions = [];
 
-// Fisher-Yates Shuffle
-function shuffleArray(array) {
-    const shuffled = array.map((item, index) => ({
-        ...item,
-        originalIndex: index
-    }));
-    
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    
-    return shuffled;
-}
+// Start Quiz
+startBtn.addEventListener('click', () => {
+    startScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
+});
 
-// Kahoot color scheme
-const kahootColors = ['red', 'blue', 'yellow', 'green'];
-const shapeSymbols = {
-    red: '🔺',
-    blue: '💠',
-    yellow: '⭐',
-    green: '🔷'
-};
+// Back to Lessons
+backBtn.addEventListener('click', () => {
+    window.location.href = 'year2-term1.html';
+});
 
-// Initialize Quiz
-function initQuiz() {
-    shuffledQuestions = shuffleArray(questions);
-    currentQuestionIndex = 0;
-    correctAnswers = 0;
-    wrongAnswers = [];
-    isReviewMode = false;
-    reviewQuestions = [];
-    reviewMistakesBtn.style.display = 'none';
-    showQuestion();
-}
+backToLessonsBtn.addEventListener('click', () => {
+    window.location.href = 'year2-term1.html';
+});
 
-// Show Question
-function showQuestion() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const currentQuestion = questionsArray[currentQuestionIndex];
+// Load Question
+function loadQuestion() {
+    const questionData = reviewMode 
+        ? questions[reviewQuestions[currentQuestionIndex]] 
+        : questions[currentQuestionIndex];
     
-    questionElement.textContent = currentQuestion.question;
+    questionText.textContent = questionData.question;
     answersGrid.innerHTML = '';
-    feedback.style.display = 'none';
-    nextButton.style.display = 'none';
     
-    currentQuestion.answers.forEach((answer, index) => {
+    // Update question counter
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
+    questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+    
+    // Update star display
+    starsDisplay.innerHTML = '★'.repeat(correctAnswers) + '☆'.repeat(totalQuestions - correctAnswers - wrongAnswers);
+    
+    // Create answer buttons
+    questionData.answers.forEach((answer, index) => {
         const button = document.createElement('button');
-        button.className = `answer-btn ${kahootColors[index]}`;
-        
-        const content = document.createElement('div');
-        content.className = 'answer-btn-content';
-        
-        const shape = document.createElement('div');
-        shape.className = 'answer-shape';
-        shape.textContent = shapeSymbols[kahootColors[index]];
-        
-        const text = document.createElement('div');
-        text.className = 'answer-text';
-        text.textContent = answer;
-        
-        content.appendChild(shape);
-        content.appendChild(text);
-        button.appendChild(content);
-        
-        button.addEventListener('click', () => selectAnswer(index));
+        button.classList.add('answer-bubble');
+        button.textContent = answer;
+        button.addEventListener('click', () => checkAnswer(index));
         answersGrid.appendChild(button);
     });
     
-    currentQuestionSpan.textContent = currentQuestionIndex + 1;
-    totalQuestionsSpan.textContent = questionsArray.length;
-    updateProgressBar();
+    // Hide feedback and next button
+    feedbackEmoji.style.display = 'none';
+    feedbackText.style.display = 'none';
+    explanation.style.display = 'none';
+    nextBtn.style.display = 'none';
 }
 
-// Select Answer
-function selectAnswer(selectedIndex) {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const currentQuestion = questionsArray[currentQuestionIndex];
-    const buttons = answersGrid.querySelectorAll('.answer-btn');
-    const isCorrect = selectedIndex === currentQuestion.correctIndex;
+// Check Answer
+function checkAnswer(selectedIndex) {
+    const questionData = reviewMode 
+        ? questions[reviewQuestions[currentQuestionIndex]] 
+        : questions[currentQuestionIndex];
     
-    buttons.forEach(button => button.disabled = true);
+    const buttons = answersGrid.querySelectorAll('.answer-bubble');
     
-    if (isCorrect) {
+    // Disable all buttons
+    buttons.forEach(btn => btn.disabled = true);
+    
+    // Check if correct
+    if (selectedIndex === questionData.correctIndex) {
         buttons[selectedIndex].classList.add('correct');
-        feedback.textContent = `✓ Correct! ${currentQuestion.explanation}`;
-        feedback.className = 'feedback-message correct';
+        feedbackEmoji.textContent = '✓';
+        feedbackEmoji.className = 'feedback-emoji correct';
+        feedbackText.textContent = 'Correct!';
+        feedbackText.className = 'feedback-text correct';
         correctAnswers++;
+        
+        if (!reviewMode) {
+            userAnswers.push({ questionIndex: currentQuestionIndex, correct: true });
+        }
     } else {
         buttons[selectedIndex].classList.add('wrong');
-        buttons[currentQuestion.correctIndex].classList.add('correct');
-        feedback.textContent = `✗ Not quite. ${currentQuestion.explanation}`;
-        feedback.className = 'feedback-message wrong';
+        buttons[questionData.correctIndex].classList.add('correct');
+        feedbackEmoji.textContent = '✗';
+        feedbackEmoji.className = 'feedback-emoji wrong';
+        feedbackText.textContent = 'Incorrect';
+        feedbackText.className = 'feedback-text wrong';
+        wrongAnswers++;
         
-        if (!isReviewMode) {
-            wrongAnswers.push(currentQuestion.originalIndex);
+        if (!reviewMode) {
+            userAnswers.push({ questionIndex: currentQuestionIndex, correct: false });
         }
     }
     
-    feedback.style.display = 'block';
-    nextButton.style.display = 'inline-block';
+    // Show feedback
+    feedbackEmoji.style.display = 'block';
+    feedbackText.style.display = 'block';
+    explanation.textContent = questionData.explanation;
+    explanation.style.display = 'block';
+    nextBtn.style.display = 'block';
 }
 
 // Next Question
-function nextQuestion() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
+nextBtn.addEventListener('click', () => {
     currentQuestionIndex++;
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
     
-    if (currentQuestionIndex < questionsArray.length) {
-        showQuestion();
+    if (currentQuestionIndex < totalQuestions) {
+        loadQuestion();
     } else {
         showResults();
     }
-}
-
-// Update Progress Bar
-function updateProgressBar() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const progress = ((currentQuestionIndex + 1) / questionsArray.length) * 100;
-    progressBar.style.width = progress + '%';
-}
+});
 
 // Show Results
 function showResults() {
-    quizContainer.style.display = 'none';
-    resultsContainer.style.display = 'flex';
+    quizScreen.classList.remove('active');
+    resultsScreen.classList.add('active');
     
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const totalQuestions = questionsArray.length;
-    const wrongCount = totalQuestions - correctAnswers;
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     
-    score.textContent = `${correctAnswers}/${totalQuestions}`;
-    correctAnswersSpan.textContent = correctAnswers;
-    wrongAnswersSpan.textContent = wrongCount;
-    percentageSpan.textContent = percentage;
+    totalStars.textContent = '★'.repeat(correctAnswers);
+    correctCount.textContent = correctAnswers;
+    incorrectCount.textContent = wrongAnswers;
     
-    let starCount = 0;
-    if (percentage === 100) starCount = 3;
-    else if (percentage >= 70) starCount = 2;
-    else if (percentage >= 50) starCount = 1;
+    // Result messages
+    if (percentage === 100) {
+        resultMessage.textContent = '🌟 Perfect! You know all the short vowels!';
+    } else if (percentage >= 80) {
+        resultMessage.textContent = '⭐ Excellent work!';
+    } else if (percentage >= 60) {
+        resultMessage.textContent = 'Good job! Keep practicing.';
+    } else {
+        resultMessage.textContent = 'Keep trying! Practice makes perfect.';
+    }
     
-    stars.textContent = '⭐'.repeat(starCount);
-    
-    if (!isReviewMode && wrongAnswers.length > 0) {
+    // Show/hide review button
+    if (!reviewMode && wrongAnswers > 0) {
         reviewMistakesBtn.style.display = 'inline-block';
     } else {
         reviewMistakesBtn.style.display = 'none';
     }
 }
 
-// Start Review Mode
-function startReviewMode() {
-    isReviewMode = true;
-    reviewQuestions = wrongAnswers.map(index => ({
-        ...questions[index],
-        originalIndex: index
-    }));
+// Retry Quiz
+retryBtn.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    userAnswers = [];
+    reviewMode = false;
+    reviewQuestions = [];
+    
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
+});
+
+// Review Mistakes
+reviewMistakesBtn.addEventListener('click', () => {
+    reviewMode = true;
+    reviewQuestions = userAnswers
+        .filter(answer => !answer.correct)
+        .map(answer => answer.questionIndex);
     
     currentQuestionIndex = 0;
     correctAnswers = 0;
+    wrongAnswers = 0;
     
-    totalQuestionsSpan.textContent = reviewQuestions.length;
-    
-    resultsContainer.style.display = 'none';
-    quizContainer.style.display = 'block';
-    showQuestion();
-}
-
-// Event Listeners
-startButton.addEventListener('click', () => {
-    startContent.style.display = 'none';
-    quizContainer.style.display = 'block';
-    initQuiz();
-});
-
-backButton.addEventListener('click', () => {
-    window.location.href = 'year2-term1.html';
-});
-
-nextButton.addEventListener('click', nextQuestion);
-
-retryButton.addEventListener('click', () => {
-    resultsContainer.style.display = 'none';
-    quizContainer.style.display = 'block';
-    initQuiz();
-});
-
-reviewMistakesBtn.addEventListener('click', startReviewMode);
-
-lessonsButton.addEventListener('click', () => {
-    window.location.href = 'year2-term1.html';
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
 });

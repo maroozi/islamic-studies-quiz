@@ -8,20 +8,20 @@ const questions = [
     },
     {
         question: "Which of these letters is light?",
-        answers: ["ب", "ط", "ق", "ض"],
-        correctIndex: 0,
+        answers: ["ط", "ب", "ق", "ض"],
+        correctIndex: 1,
         explanation: "ب is always light and soft."
     },
     {
         question: "Which group shows only heavy letters?",
-        answers: ["خ ص ض", "ب ت ث", "س ز ش", "م ي ل"],
-        correctIndex: 0,
+        answers: ["ب ت ث", "م ي ل", "خ ص ض", "س ز ش"],
+        correctIndex: 2,
         explanation: "All three—خ ص ض—are heavy letters."
     },
     {
         question: "Which group shows only light letters?",
-        answers: ["س ش ز", "ط ظ ض", "غ ق خ", "ص ط ض"],
-        correctIndex: 0,
+        answers: ["ط ظ ض", "غ ق خ", "ص ط ض", "س ش ز"],
+        correctIndex: 3,
         explanation: "س ش ز are all light letters."
     },
     {
@@ -32,20 +32,20 @@ const questions = [
     },
     {
         question: "Is the letter ف heavy or light?",
-        answers: ["Light", "Heavy", "Both", "Depends"],
-        correctIndex: 0,
+        answers: ["Heavy", "Light", "Both", "Depends"],
+        correctIndex: 1,
         explanation: "ف is always light."
     },
     {
         question: "Which letter has a deep, strong sound?",
-        answers: ["ط", "م", "ب", "ن"],
-        correctIndex: 0,
+        answers: ["م", "ب", "ط", "ن"],
+        correctIndex: 2,
         explanation: "ط is a heavy, deep letter."
     },
     {
         question: "Which letter sounds soft and thin?",
-        answers: ["س", "ظ", "غ", "ق"],
-        correctIndex: 0,
+        answers: ["ظ", "غ", "ق", "س"],
+        correctIndex: 3,
         explanation: "س is one of the light letters."
     },
     {
@@ -56,25 +56,25 @@ const questions = [
     },
     {
         question: "Which of these letters is heavy?",
-        answers: ["ض", "ي", "ك", "ل"],
-        correctIndex: 0,
+        answers: ["ي", "ض", "ك", "ل"],
+        correctIndex: 1,
         explanation: "ض is one of the heaviest letters in Arabic."
     },
     {
         question: "Which of these is the correct list of heavy letters?",
         answers: [
-            "خ ص ض ط ظ غ ق",
             "س ش ز ك ل م ن",
             "أ ب ت ث ج ح خ",
+            "خ ص ض ط ظ غ ق",
             "ر س ش ل م ن و"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation: "These seven letters are the heavy letters taught in Year 2."
     },
     {
         question: "Which of these is a light letter?",
-        answers: ["م", "غ", "ط", "ق"],
-        correctIndex: 0,
+        answers: ["غ", "ط", "ق", "م"],
+        correctIndex: 3,
         explanation: "م is always soft and light."
     },
     {
@@ -85,240 +85,214 @@ const questions = [
     },
     {
         question: "Which letter makes a strong 'qa' sound?",
-        answers: ["ق", "ف", "ك", "ح"],
-        correctIndex: 0,
+        answers: ["ف", "ق", "ك", "ح"],
+        correctIndex: 1,
         explanation: "ق is a deep, heavy sound from the back of the mouth."
     },
     {
         question: "Which of these is light and easy to say?",
-        answers: ["ل", "ط", "ض", "ق"],
-        correctIndex: 0,
+        answers: ["ط", "ض", "ل", "ق"],
+        correctIndex: 2,
         explanation: "ل is a light letter (Year 2 does not cover the 'Allah' rule)."
     }
 ];
 
 // DOM Elements
-const startButton = document.getElementById('startButton');
-const backButton = document.getElementById('backButton');
-const nextButton = document.getElementById('nextButton');
-const retryButton = document.getElementById('retryButton');
+const startScreen = document.getElementById('startScreen');
+const quizScreen = document.getElementById('quizScreen');
+const resultsScreen = document.getElementById('resultsScreen');
+
+const startBtn = document.getElementById('startBtn');
+const backBtn = document.getElementById('backBtn');
+const nextBtn = document.getElementById('nextBtn');
+const retryBtn = document.getElementById('retryBtn');
 const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
-const lessonsButton = document.getElementById('lessonsButton');
+const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
-const startContent = document.getElementById('startContent');
-const quizContainer = document.getElementById('quizContainer');
-const resultsContainer = document.getElementById('resultsContainer');
-
-const questionElement = document.getElementById('question');
+const questionText = document.getElementById('questionText');
 const answersGrid = document.getElementById('answersGrid');
-const feedback = document.getElementById('feedback');
-const currentQuestionSpan = document.getElementById('currentQuestion');
-const totalQuestionsSpan = document.getElementById('totalQuestions');
-const progressBar = document.getElementById('progressBar');
-const stars = document.getElementById('stars');
-const score = document.getElementById('score');
-const correctAnswersSpan = document.getElementById('correctAnswers');
-const wrongAnswersSpan = document.getElementById('wrongAnswers');
-const percentageSpan = document.getElementById('percentage');
+const feedbackEmoji = document.getElementById('feedbackEmoji');
+const feedbackText = document.getElementById('feedbackText');
+const explanation = document.getElementById('explanation');
+
+const questionCounter = document.getElementById('question-counter');
+const starsDisplay = document.getElementById('star-display');
+
+const totalStars = document.getElementById('totalStars');
+const correctCount = document.getElementById('correctCount');
+const incorrectCount = document.getElementById('incorrectCount');
+const resultMessage = document.getElementById('resultMessage');
 
 // Game State
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
-let wrongAnswers = [];
-let shuffledQuestions = [];
-let isReviewMode = false;
+let wrongAnswers = 0;
+let userAnswers = [];
+let reviewMode = false;
 let reviewQuestions = [];
 
-// Fisher-Yates Shuffle
-function shuffleArray(array) {
-    const shuffled = array.map((item, index) => ({
-        ...item,
-        originalIndex: index
-    }));
-    
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    
-    return shuffled;
-}
+// Start Quiz
+startBtn.addEventListener('click', () => {
+    startScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
+});
 
-// Kahoot color scheme
-const kahootColors = ['red', 'blue', 'yellow', 'green'];
-const shapeSymbols = {
-    red: '🔺',
-    blue: '💠',
-    yellow: '⭐',
-    green: '🔷'
-};
+// Back to Lessons
+backBtn.addEventListener('click', () => {
+    window.location.href = 'year2-arabic.html';
+});
 
-// Initialize Quiz
-function initQuiz() {
-    shuffledQuestions = shuffleArray(questions);
-    currentQuestionIndex = 0;
-    correctAnswers = 0;
-    wrongAnswers = [];
-    isReviewMode = false;
-    reviewQuestions = [];
-    reviewMistakesBtn.style.display = 'none';
-    showQuestion();
-}
+backToLessonsBtn.addEventListener('click', () => {
+    window.location.href = 'year2-arabic.html';
+});
 
-// Show Question
-function showQuestion() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const currentQuestion = questionsArray[currentQuestionIndex];
+// Load Question
+function loadQuestion() {
+    const questionData = reviewMode 
+        ? questions[reviewQuestions[currentQuestionIndex]] 
+        : questions[currentQuestionIndex];
     
-    questionElement.textContent = currentQuestion.question;
+    questionText.textContent = questionData.question;
     answersGrid.innerHTML = '';
-    feedback.style.display = 'none';
-    nextButton.style.display = 'none';
     
-    currentQuestion.answers.forEach((answer, index) => {
+    // Update question counter
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
+    questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+    
+    // Update star display
+    starsDisplay.innerHTML = '★'.repeat(correctAnswers) + '☆'.repeat(totalQuestions - correctAnswers - wrongAnswers);
+    
+    // Create answer buttons
+    questionData.answers.forEach((answer, index) => {
         const button = document.createElement('button');
-        button.className = `answer-btn ${kahootColors[index]}`;
-        
-        const content = document.createElement('div');
-        content.className = 'answer-btn-content';
-        
-        const shape = document.createElement('div');
-        shape.className = 'answer-shape';
-        shape.textContent = shapeSymbols[kahootColors[index]];
-        
-        const text = document.createElement('div');
-        text.className = 'answer-text';
-        text.textContent = answer;
-        
-        content.appendChild(shape);
-        content.appendChild(text);
-        button.appendChild(content);
-        
-        button.addEventListener('click', () => selectAnswer(index));
+        button.classList.add('answer-bubble');
+        button.textContent = answer;
+        button.addEventListener('click', () => checkAnswer(index));
         answersGrid.appendChild(button);
     });
     
-    currentQuestionSpan.textContent = currentQuestionIndex + 1;
-    totalQuestionsSpan.textContent = questionsArray.length;
-    updateProgressBar();
+    // Hide feedback and next button
+    feedbackEmoji.style.display = 'none';
+    feedbackText.style.display = 'none';
+    explanation.style.display = 'none';
+    nextBtn.style.display = 'none';
 }
 
-// Select Answer
-function selectAnswer(selectedIndex) {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const currentQuestion = questionsArray[currentQuestionIndex];
-    const buttons = answersGrid.querySelectorAll('.answer-btn');
-    const isCorrect = selectedIndex === currentQuestion.correctIndex;
+// Check Answer
+function checkAnswer(selectedIndex) {
+    const questionData = reviewMode 
+        ? questions[reviewQuestions[currentQuestionIndex]] 
+        : questions[currentQuestionIndex];
     
-    buttons.forEach(button => button.disabled = true);
+    const buttons = answersGrid.querySelectorAll('.answer-bubble');
     
-    if (isCorrect) {
+    // Disable all buttons
+    buttons.forEach(btn => btn.disabled = true);
+    
+    // Check if correct
+    if (selectedIndex === questionData.correctIndex) {
         buttons[selectedIndex].classList.add('correct');
-        feedback.textContent = `✓ Correct! ${currentQuestion.explanation}`;
-        feedback.className = 'feedback-message correct';
+        feedbackEmoji.textContent = '✓';
+        feedbackEmoji.className = 'feedback-emoji correct';
+        feedbackText.textContent = 'Correct!';
+        feedbackText.className = 'feedback-text correct';
         correctAnswers++;
+        
+        if (!reviewMode) {
+            userAnswers.push({ questionIndex: currentQuestionIndex, correct: true });
+        }
     } else {
         buttons[selectedIndex].classList.add('wrong');
-        buttons[currentQuestion.correctIndex].classList.add('correct');
-        feedback.textContent = `✗ Not quite. ${currentQuestion.explanation}`;
-        feedback.className = 'feedback-message wrong';
+        buttons[questionData.correctIndex].classList.add('correct');
+        feedbackEmoji.textContent = '✗';
+        feedbackEmoji.className = 'feedback-emoji wrong';
+        feedbackText.textContent = 'Incorrect';
+        feedbackText.className = 'feedback-text wrong';
+        wrongAnswers++;
         
-        if (!isReviewMode) {
-            wrongAnswers.push(currentQuestion.originalIndex);
+        if (!reviewMode) {
+            userAnswers.push({ questionIndex: currentQuestionIndex, correct: false });
         }
     }
     
-    feedback.style.display = 'block';
-    nextButton.style.display = 'inline-block';
+    // Show feedback
+    feedbackEmoji.style.display = 'block';
+    feedbackText.style.display = 'block';
+    explanation.textContent = questionData.explanation;
+    explanation.style.display = 'block';
+    nextBtn.style.display = 'block';
 }
 
 // Next Question
-function nextQuestion() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
+nextBtn.addEventListener('click', () => {
     currentQuestionIndex++;
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
     
-    if (currentQuestionIndex < questionsArray.length) {
-        showQuestion();
+    if (currentQuestionIndex < totalQuestions) {
+        loadQuestion();
     } else {
         showResults();
     }
-}
-
-// Update Progress Bar
-function updateProgressBar() {
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const progress = ((currentQuestionIndex + 1) / questionsArray.length) * 100;
-    progressBar.style.width = progress + '%';
-}
+});
 
 // Show Results
 function showResults() {
-    quizContainer.style.display = 'none';
-    resultsContainer.style.display = 'flex';
+    quizScreen.classList.remove('active');
+    resultsScreen.classList.add('active');
     
-    const questionsArray = isReviewMode ? reviewQuestions : shuffledQuestions;
-    const totalQuestions = questionsArray.length;
-    const wrongCount = totalQuestions - correctAnswers;
+    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     
-    score.textContent = `${correctAnswers}/${totalQuestions}`;
-    correctAnswersSpan.textContent = correctAnswers;
-    wrongAnswersSpan.textContent = wrongCount;
-    percentageSpan.textContent = percentage;
+    totalStars.textContent = '★'.repeat(correctAnswers);
+    correctCount.textContent = correctAnswers;
+    incorrectCount.textContent = wrongAnswers;
     
-    let starCount = 0;
-    if (percentage === 100) starCount = 3;
-    else if (percentage >= 70) starCount = 2;
-    else if (percentage >= 50) starCount = 1;
+    // Result messages
+    if (percentage === 100) {
+        resultMessage.textContent = '🌟 Perfect! You mastered heavy and light letters!';
+    } else if (percentage >= 80) {
+        resultMessage.textContent = '⭐ Excellent work!';
+    } else if (percentage >= 60) {
+        resultMessage.textContent = 'Good job! Keep practicing.';
+    } else {
+        resultMessage.textContent = 'Keep trying! Practice makes perfect.';
+    }
     
-    stars.textContent = '⭐'.repeat(starCount);
-    
-    if (!isReviewMode && wrongAnswers.length > 0) {
+    // Show/hide review button
+    if (!reviewMode && wrongAnswers > 0) {
         reviewMistakesBtn.style.display = 'inline-block';
     } else {
         reviewMistakesBtn.style.display = 'none';
     }
 }
 
-// Start Review Mode
-function startReviewMode() {
-    isReviewMode = true;
-    reviewQuestions = wrongAnswers.map(index => ({
-        ...questions[index],
-        originalIndex: index
-    }));
+// Retry Quiz
+retryBtn.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    userAnswers = [];
+    reviewMode = false;
+    reviewQuestions = [];
+    
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
+});
+
+// Review Mistakes
+reviewMistakesBtn.addEventListener('click', () => {
+    reviewMode = true;
+    reviewQuestions = userAnswers
+        .filter(answer => !answer.correct)
+        .map(answer => answer.questionIndex);
     
     currentQuestionIndex = 0;
     correctAnswers = 0;
+    wrongAnswers = 0;
     
-    totalQuestionsSpan.textContent = reviewQuestions.length;
-    
-    resultsContainer.style.display = 'none';
-    quizContainer.style.display = 'block';
-    showQuestion();
-}
-
-// Event Listeners
-startButton.addEventListener('click', () => {
-    startContent.style.display = 'none';
-    quizContainer.style.display = 'block';
-    initQuiz();
-});
-
-backButton.addEventListener('click', () => {
-    window.location.href = 'year2-arabic.html';
-});
-
-nextButton.addEventListener('click', nextQuestion);
-
-retryButton.addEventListener('click', () => {
-    resultsContainer.style.display = 'none';
-    quizContainer.style.display = 'block';
-    initQuiz();
-});
-
-reviewMistakesBtn.addEventListener('click', startReviewMode);
-
-lessonsButton.addEventListener('click', () => {
-    window.location.href = 'year2-arabic.html';
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    loadQuestion();
 });
