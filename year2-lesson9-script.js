@@ -285,7 +285,7 @@ function resetQuiz() {
 
 function startReviewMode() {
     isReviewMode = true;
-    reviewQuestions = wrongAnswers.map(q => questions[q.originalIndex]);
+    reviewQuestions = [...wrongAnswers];
     currentQuestionIndex = 0;
     score = 0;
     totalQuestionsSpan.textContent = reviewQuestions.length;
