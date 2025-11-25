@@ -584,6 +584,9 @@ let questionBank = questionBanks[currentSubject]; // Current question bank
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswer = false;
+let wrongAnswers = [];
+let isReviewMode = false;
+let reviewQuestions = [];
 
 // Encouraging messages
 const correctMessages = [
@@ -637,7 +640,8 @@ const resultMessage = document.getElementById('resultMessage');
 const percentageText = document.getElementById('percentageText');
 const resultEmoji = document.getElementById('resultEmoji');
 const correctAnswers = document.getElementById('correctAnswers');
-const wrongAnswers = document.getElementById('wrongAnswers');
+const wrongAnswersSpan = document.getElementById('wrongAnswers');
+const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
 const progressCircle = document.getElementById('progressCircle');
 
 // Event Listeners
@@ -649,6 +653,7 @@ document.querySelectorAll('.subject-card').forEach(card => {
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
+reviewMistakesBtn.addEventListener('click', startReviewMode);
 backToSubjects.addEventListener('click', goToSubjectSelection);
 changeSubjectBtn.addEventListener('click', goToSubjectSelection);
 
@@ -727,6 +732,10 @@ function shuffleArray(array) {
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
+    wrongAnswers = [];
+    isReviewMode = false;
+    reviewQuestions = [];
+    reviewMistakesBtn.style.display = 'none';
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     showQuestion();
@@ -734,15 +743,16 @@ function startQuiz() {
 
 // Show Question
 function showQuestion() {
-    const question = questionBank[currentQuestionIndex];
+    const questionsArray = isReviewMode ? reviewQuestions : questionBank;
+    const question = questionsArray[currentQuestionIndex];
     selectedAnswer = false;
     
     // Update header info
-    questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questionBank.length}`;
+    questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questionsArray.length}`;
     scoreDisplay.textContent = score;
     
     // Update progress bar
-    const progress = ((currentQuestionIndex + 1) / questionBank.length) * 100;
+    const progress = ((currentQuestionIndex + 1) / questionsArray.length) * 100;
     progressFill.style.width = progress + '%';
     progressPercent.textContent = Math.round(progress) + '%';
     
@@ -812,6 +822,9 @@ function selectAnswer(answer, button, shuffledAnswers) {
         }, 300);
     } else {
         button.classList.add('wrong');
+        if (!isReviewMode) {
+            wrongAnswers.push(question);
+        }
         feedback.classList.add('wrong');
         feedback.classList.remove('correct');
         
@@ -841,8 +854,9 @@ function selectAnswer(answer, button, shuffledAnswers) {
 // Next Question
 function nextQuestion() {
     currentQuestionIndex++;
+    const questionsArray = isReviewMode ? reviewQuestions : questionBank;
     
-    if (currentQuestionIndex < questionBank.length) {
+    if (currentQuestionIndex < questionsArray.length) {
         showQuestion();
     } else {
         showResults();
@@ -854,14 +868,15 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
-    const percentage = Math.round((score / questionBank.length) * 100);
-    const wrong = questionBank.length - score;
+    const questionsArray = isReviewMode ? reviewQuestions : questionBank;
+    const percentage = Math.round((score / questionsArray.length) * 100);
+    const wrong = questionsArray.length - score;
     
     // Update scores
-    finalScore.textContent = `${score}/${questionBank.length}`;
+    finalScore.textContent = `${score}/${questionsArray.length}`;
     percentageText.textContent = `${percentage}%`;
     correctAnswers.textContent = score;
-    wrongAnswers.textContent = wrong;
+    wrongAnswersSpan.textContent = wrong;
     
     // Animate circular progress
     const circumference = 2 * Math.PI * 100;
@@ -919,10 +934,28 @@ function showResults() {
         resultMessage.textContent = "Practice makes perfect! You can do it!";
         resultEmoji.textContent = '💪';
     }
+    
+    // Show Review Mistakes button if there are wrong answers and not in review mode
+    if (wrongAnswers.length > 0 && !isReviewMode) {
+        reviewMistakesBtn.style.display = 'inline-block';
+    } else {
+        reviewMistakesBtn.style.display = 'none';
+    }
 }
 
 // Restart Quiz
 function restartQuiz() {
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
+}
+
+// Review Mistakes
+function startReviewMode() {
+    isReviewMode = true;
+    reviewQuestions = [...wrongAnswers];
+    currentQuestionIndex = 0;
+    score = 0;
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    showQuestion();
 }

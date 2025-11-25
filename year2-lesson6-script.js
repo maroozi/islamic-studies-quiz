@@ -80,6 +80,9 @@ const questions = [
 let currentQuestionIndex = 0;
 let score = 0;
 let stars = 0;
+let wrongAnswers = [];
+let isReviewMode = false;
+let reviewQuestions = [];
 
 // DOM elements
 const startScreen = document.getElementById('startScreen');
@@ -89,6 +92,7 @@ const startBtn = document.getElementById('startBtn');
 const backBtn = document.getElementById('backBtn');
 const nextBtn = document.getElementById('nextBtn');
 const retryBtn = document.getElementById('retryBtn');
+const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
 const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
 const currentQuestionSpan = document.getElementById('currentQuestion');
@@ -122,7 +126,12 @@ function initQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     stars = 0;
-    totalQuestionsSpan.textContent = questions.length;
+    wrongAnswers = [];
+    isReviewMode = false;
+    reviewQuestions = [];
+    reviewMistakesBtn.style.display = 'none';
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    totalQuestionsSpan.textContent = questionsArray.length;
     starsSpan.textContent = `⭐ ${stars}`;
 }
 
@@ -143,12 +152,13 @@ const shapeSymbols = {
 
 // Show question
 function showQuestion() {
-    const question = questions[currentQuestionIndex];
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    const question = questionsArray[currentQuestionIndex];
     
     // Update UI
     currentQuestionSpan.textContent = currentQuestionIndex + 1;
     questionText.textContent = question.question;
-    progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+    progressBar.style.width = `${((currentQuestionIndex + 1) / questionsArray.length) * 100}%`;
     
     // Hide feedback
     feedbackContainer.classList.remove('show');
@@ -213,6 +223,9 @@ function selectAnswer(selectedButton, selectedIndex, question) {
         feedbackText.className = 'feedback-text correct';
     } else {
         selectedButton.classList.add('wrong');
+        if (!isReviewMode) {
+            wrongAnswers.push(question);
+        }
         
         // Highlight correct answer
         buttons.forEach(btn => {
@@ -234,8 +247,9 @@ function selectAnswer(selectedButton, selectedIndex, question) {
 // Next question
 function nextQuestion() {
     currentQuestionIndex++;
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
     
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questionsArray.length) {
         showQuestion();
     } else {
         showResults();
@@ -247,7 +261,8 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
-    const totalQuestions = questions.length;
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    const totalQuestions = questionsArray.length;
     const incorrectCount = totalQuestions - score;
     const percentage = Math.round((score / totalQuestions) * 100);
     
@@ -270,6 +285,13 @@ function showResults() {
     }
     
     resultMessage.textContent = message;
+    
+    // Show Review Mistakes button if there are wrong answers and not in review mode
+    if (wrongAnswers.length > 0 && !isReviewMode) {
+        reviewMistakesBtn.style.display = 'inline-block';
+    } else {
+        reviewMistakesBtn.style.display = 'none';
+    }
 }
 
 // Retry quiz
@@ -277,6 +299,18 @@ function retryQuiz() {
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
     initQuiz();
+}
+
+// Review mistakes
+function startReviewMode() {
+    isReviewMode = true;
+    reviewQuestions = wrongAnswers.map(q => questions[q.originalIndex]);
+    currentQuestionIndex = 0;
+    score = 0;
+    totalQuestionsSpan.textContent = reviewQuestions.length;
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    showQuestion();
 }
 
 // Go back to lessons
@@ -289,6 +323,7 @@ startBtn.addEventListener('click', startQuiz);
 backBtn.addEventListener('click', backToLessons);
 nextBtn.addEventListener('click', nextQuestion);
 retryBtn.addEventListener('click', retryQuiz);
+reviewMistakesBtn.addEventListener('click', startReviewMode);
 backToLessonsBtn.addEventListener('click', backToLessons);
 
 // Initialize on load

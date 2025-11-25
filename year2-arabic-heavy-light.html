@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2 Arabic - Heavy and Light Letters</title>
+    <link rel="stylesheet" href="year2-kahoot-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .question {
+            font-size: 3rem;
+        }
+        .topic-bubble {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startContent" class="start-content">
+            <div class="title-section">
+                <h1 class="game-title">🔤 Arabic – Heavy and Light Letters!</h1>
+                <p class="subtitle">Year 2 – Arabic Term 1</p>
+                <div class="fun-badge">✨ Mufakhkham & Murakhkhaq ✨</div>
+            </div>
+            
+            <div class="lesson-preview">
+                <div class="topic-grid">
+                    <div class="topic-bubble" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        💪
+                    </div>
+                    <div class="topic-bubble" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        🪶
+                    </div>
+                    <div class="topic-bubble" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        خ ص ض
+                    </div>
+                    <div class="topic-bubble" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        ط ظ غ ق
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-emoji">📝</div>
+                    <div class="info-text">15 Questions</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-emoji">⭐</div>
+                    <div class="info-text">Earn Stars</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-emoji">🎯</div>
+                    <div class="info-text">Heavy vs Light</div>
+                </div>
+            </div>
+            
+            <button id="startButton" class="start-button">
+                <span class="button-text">🚀 Start Learning! →</span>
+            </button>
+            <button id="backButton" class="back-button">
+                <span class="button-text">← Back to Arabic Menu</span>
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizContainer" class="quiz-container" style="display: none;">
+            <div class="quiz-header">
+                <button id="backButton" class="back-button-quiz">← Back</button>
+                <div class="progress-info">
+                    Question <span id="currentQuestion">1</span>/<span id="totalQuestions">15</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="question-section">
+                <h2 id="question" class="question">Question appears here</h2>
+                <div id="answersGrid" class="answers-grid"></div>
+                <div id="feedback" class="feedback-message"></div>
+                <button id="nextButton" class="next-button" style="display: none;">Next Question →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsContainer" class="results-container" style="display: none;">
+            <div class="results-card">
+                <h2 class="results-title">🎉 Quiz Complete!</h2>
+                <div class="stars" id="stars">⭐⭐⭐</div>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <div class="score-number" id="score">0/15</div>
+                        <div class="score-label">Your Score</div>
+                    </div>
+                </div>
+                
+                <div class="results-breakdown">
+                    <div class="breakdown-item correct">
+                        <span class="breakdown-label">✓ Correct</span>
+                        <span class="breakdown-value" id="correctAnswers">0</span>
+                    </div>
+                    <div class="breakdown-item wrong">
+                        <span class="breakdown-label">✗ Wrong</span>
+                        <span class="breakdown-value" id="wrongAnswers">0</span>
+                    </div>
+                    <div class="breakdown-item percentage">
+                        <span class="breakdown-label">📊 Percentage</span>
+                        <span class="breakdown-value"><span id="percentage">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="results-buttons">
+                    <button id="retryButton" class="retry-button">🔄 Try Again</button>
+                    <button id="reviewMistakesBtn" class="review-button" style="display: none;">📝 Review Mistakes</button>
+                    <button id="lessonsButton" class="lessons-button">← Back to Arabic Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="year2-arabic-heavy-light-script.js"></script>
+</body>
+</html>

@@ -98,6 +98,9 @@ const questions = [
 let currentQuestionIndex = 0;
 let score = 0;
 let stars = 0;
+let wrongAnswers = [];
+let isReviewMode = false;
+let reviewQuestions = [];
 
 // DOM elements
 const startScreen = document.getElementById('startScreen');
@@ -107,6 +110,7 @@ const startBtn = document.getElementById('startBtn');
 const backBtn = document.getElementById('backBtn');
 const nextBtn = document.getElementById('nextBtn');
 const retryBtn = document.getElementById('retryBtn');
+const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
 const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
 const currentQuestionSpan = document.getElementById('currentQuestion');
@@ -140,7 +144,12 @@ function initQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     stars = 0;
-    totalQuestionsSpan.textContent = questions.length;
+    wrongAnswers = [];
+    isReviewMode = false;
+    reviewQuestions = [];
+    reviewMistakesBtn.style.display = 'none';
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    totalQuestionsSpan.textContent = questionsArray.length;
     starsSpan.textContent = `⭐ ${stars}`;
 }
 
@@ -161,14 +170,15 @@ const shapeSymbols = {
 };
 
 function showQuestion() {
-    const question = questions[currentQuestionIndex];
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    const question = questionsArray[currentQuestionIndex];
     
     // Update question text
     questionText.textContent = question.question;
     
     // Update progress
     currentQuestionSpan.textContent = currentQuestionIndex + 1;
-    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    const progress = ((currentQuestionIndex + 1) / questionsArray.length) * 100;
     progressBar.style.width = `${progress}%`;
     
     // Clear previous answers
@@ -239,6 +249,9 @@ function selectAnswer(selectedIndex, selectedButton) {
         feedbackText.style.color = '#11998e';
     } else {
         selectedButton.classList.add('wrong');
+        if (!isReviewMode) {
+            wrongAnswers.push(question);
+        }
         feedbackEmoji.textContent = '😢';
         feedbackText.textContent = 'Not quite! Keep learning!';
         feedbackText.style.color = '#eb3349';
@@ -251,8 +264,9 @@ function selectAnswer(selectedIndex, selectedButton) {
 
 function nextQuestion() {
     currentQuestionIndex++;
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
     
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questionsArray.length) {
         showQuestion();
     } else {
         showResults();
@@ -263,11 +277,12 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
     totalStarsSpan.textContent = stars;
     correctCountSpan.textContent = score;
-    incorrectCountSpan.textContent = questions.length - score;
+    incorrectCountSpan.textContent = questionsArray.length - score;
     
-    const percentage = (score / questions.length) * 100;
+    const percentage = (score / questionsArray.length) * 100;
     
     let message = '';
     if (percentage === 100) {
@@ -283,12 +298,30 @@ function showResults() {
     }
     
     resultMessage.textContent = message;
+    
+    // Show Review Mistakes button if there are wrong answers and not in review mode
+    if (wrongAnswers.length > 0 && !isReviewMode) {
+        reviewMistakesBtn.style.display = 'inline-block';
+    } else {
+        reviewMistakesBtn.style.display = 'none';
+    }
 }
 
 function resetQuiz() {
     initQuiz();
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
+}
+
+function startReviewMode() {
+    isReviewMode = true;
+    reviewQuestions = wrongAnswers.map(q => questions[q.originalIndex]);
+    currentQuestionIndex = 0;
+    score = 0;
+    totalQuestionsSpan.textContent = reviewQuestions.length;
+    resultsScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    showQuestion();
 }
 
 // Event listeners
@@ -298,6 +331,7 @@ backBtn.addEventListener('click', () => {
 });
 nextBtn.addEventListener('click', nextQuestion);
 retryBtn.addEventListener('click', resetQuiz);
+reviewMistakesBtn.addEventListener('click', startReviewMode);
 backToLessonsBtn.addEventListener('click', () => {
     window.location.href = 'year2-islamic-studies.html';
 });

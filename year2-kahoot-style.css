@@ -606,6 +606,25 @@ body {
     box-shadow: 0 12px 30px rgba(240, 147, 251, 0.5);
 }
 
+.review-button {
+    background: linear-gradient(135deg, #FA709A 0%, #FEE140 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Fredoka', cursive;
+    box-shadow: 0 8px 20px rgba(250, 112, 154, 0.4);
+    transition: all 0.3s ease;
+}
+
+.review-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(250, 112, 154, 0.5);
+}
+
 .lessons-button {
     background: white;
     color: #667eea;

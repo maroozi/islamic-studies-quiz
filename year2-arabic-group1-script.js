@@ -1,66 +1,148 @@
-// Year 2: The Importance of Friday - Kahoot-Style Quiz
-// Lesson 9 - Term 1
-
+// Questions for Arabic Letters Group 1
 const questions = [
     {
-        question: "What is the special day of the week for Muslims? 📅",
-        answers: ["Friday", "Monday", "Sunday", "Tuesday"],
+        question: "How do we read أَ ?",
+        answers: ["A", "I", "U", "Oo"],
         correctIndex: 0,
-        explanation: "Friday is the most special day of the week for Muslims! It's called Jumu'ah and it's the best day! 🌟"
+        explanation: "Fatḥah ( َ ) makes the sound short and open like 'A'."
     },
     {
-        question: "What is the Arabic name for Friday? 🕌",
-        answers: ["Jumu'ah", "Eid", "Ramadan", "Tahajjud"],
+        question: "How do we read أِ ?",
+        answers: ["I", "A", "U", "O"],
         correctIndex: 0,
-        explanation: "The Arabic name for Friday is 'Jumu'ah' (الجمعة) which means 'gathering' or 'congregation'! 💚"
+        explanation: "Kasrah ( ِ ) makes a light 'i' sound."
     },
     {
-        question: "What did Prophet Muhammad ﷺ say we should do on Fridays? 🚿",
-        answers: ["Wear our best clothes and take a shower/bath", "Stay home all day", "Not pray", "Sleep late"],
+        question: "How do we read أُ ?",
+        answers: ["U", "A", "I", "Ee"],
         correctIndex: 0,
-        explanation: "Prophet Muhammad ﷺ taught us to take a bath (ghusl), wear our best clothes, and use nice perfume on Fridays! ✨"
+        explanation: "Dhammah ( ُ ) makes a rounded 'u' sound."
     },
     {
-        question: "Where should men go for the special Friday prayer? 🕌",
-        answers: ["The mosque (masjid)", "The park", "The market", "The library"],
+        question: "How do we read بَ ?",
+        answers: ["Ba", "Bi", "Bu", "Bo"],
         correctIndex: 0,
-        explanation: "Muslim men must go to the mosque (masjid) for the special Jumu'ah prayer. It's very important! 💚"
+        explanation: "Fatḥah ( َ ) makes the short 'a' sound: Ba."
     },
     {
-        question: "What do women and children do on Friday? 👩👧",
-        answers: ["They may go to the masjid or pray at home", "They do not pray", "They must go to school", "They fast all day"],
+        question: "How do we read بِ ?",
+        answers: ["Bi", "Ba", "Bu", "Bee"],
         correctIndex: 0,
-        explanation: "Women and children can choose to go to the masjid or pray at home on Fridays. Both are good! 🌟"
+        explanation: "Kasrah ( ِ ) gives the short 'i' sound."
     },
     {
-        question: "Who created Prophet Ādam عليه السلام? 👤",
-        answers: ["Allāh ﷻ created him on a Friday", "The angels", "People", "Animals"],
+        question: "How do we read بُ ?",
+        answers: ["Bu", "Ba", "Bi", "Bo"],
         correctIndex: 0,
-        explanation: "Allāh ﷻ created our first father, Prophet Ādam (AS), on a Friday! Friday has always been special! ✨"
+        explanation: "Dhammah ( ُ ) makes a rounded 'u' sound."
     },
     {
-        question: "Which important event will happen on a Friday? ⏰",
-        answers: ["The Day of Judgement", "Eid", "Lailatul Qadr", "The Hijrah"],
+        question: "What is the sound of تَ ?",
+        answers: ["Ta", "Ti", "Tu", "Teh"],
         correctIndex: 0,
-        explanation: "The Day of Judgement (Qiyāmah) will happen on a Friday! This shows how special this day is! SubhanAllah! 🌟"
+        explanation: "Fatḥah gives the short 'a': Ta."
     },
     {
-        question: "When is the special hour on Friday? 🌅",
-        answers: ["Just before Maghrib (sunset)", "Early morning", "After sunrise", "Midnight"],
+        question: "What is the sound of تِ ?",
+        answers: ["Ti", "Ta", "Tu", "Tee"],
         correctIndex: 0,
-        explanation: "There's a special hour on Friday, just before Maghrib prayer (sunset). This is a blessed time! ✨"
+        explanation: "Kasrah gives the short 'i': Ti."
     },
     {
-        question: "What happens if we make duʿā in the special hour? 🤲",
-        answers: ["Allāh answers it", "Nothing happens", "It is not allowed", "Only children's duʿā is accepted"],
+        question: "What is the sound of تُ ?",
+        answers: ["Tu", "Ta", "Ti", "Too"],
         correctIndex: 0,
-        explanation: "If we make duʿā during the special hour on Friday, Allāh ﷻ will answer our prayers! How amazing! 💚"
+        explanation: "Dhammah gives the short 'u': Tu."
     },
     {
-        question: "What should we do on Fridays? 🙏",
-        answers: ["Ask Allāh for forgiveness and pray for ourselves and others", "Fight with people", "Waste time", "Ignore prayer"],
+        question: "How do we pronounce ثَ ?",
+        answers: ["Tha", "Sa", "Sha", "Za"],
         correctIndex: 0,
-        explanation: "On Fridays, we should ask Allāh for forgiveness, make lots of duʿā, and pray for ourselves and others! Alhamdulillāh! 🌟"
+        explanation: "ث makes the soft 'th' sound like in 'think'."
+    },
+    {
+        question: "How do we pronounce ثِ ?",
+        answers: ["Thi", "Tha", "Thu", "Si"],
+        correctIndex: 0,
+        explanation: "Kasrah makes the 'i' sound: Thi."
+    },
+    {
+        question: "How do we pronounce ثُ ?",
+        answers: ["Thu", "Tho", "Tha", "Si"],
+        correctIndex: 0,
+        explanation: "Dhammah rounds the sound to 'u': Thu."
+    },
+    {
+        question: "How do we read جَ ?",
+        answers: ["Ja", "Ga", "Cha", "Sha"],
+        correctIndex: 0,
+        explanation: "ج makes the 'j' sound: Ja."
+    },
+    {
+        question: "How do we read جِ ?",
+        answers: ["Ji", "Ja", "Ju", "Gee"],
+        correctIndex: 0,
+        explanation: "Kasrah gives the 'i' sound: Ji."
+    },
+    {
+        question: "How do we read جُ ?",
+        answers: ["Ju", "Jo", "Ja", "Ji"],
+        correctIndex: 0,
+        explanation: "Dhammah creates a rounded 'u' sound."
+    },
+    {
+        question: "What is the correct sound for حَ ?",
+        answers: ["Ha (soft breeze sound)", "Ha (strong)", "Kha", "Ja"],
+        correctIndex: 0,
+        explanation: "ح is a soft breathy 'h' sound from the throat."
+    },
+    {
+        question: "What is the correct sound for حِ ?",
+        answers: ["Hi (soft)", "Ha", "Hu", "Khi"],
+        correctIndex: 0,
+        explanation: "Kasrah gives the soft 'i' sound with the letter ح."
+    },
+    {
+        question: "What is the correct sound for حُ ?",
+        answers: ["Hu (soft)", "Ha", "Hi", "Khu"],
+        correctIndex: 0,
+        explanation: "Dhammah gives the soft 'u' sound with ح."
+    },
+    {
+        question: "How do we pronounce خَ ?",
+        answers: ["Kha (heavy)", "Ha", "Ka", "Sha"],
+        correctIndex: 0,
+        explanation: "خ is a heavy throat sound like 'kh' in 'Khalid'."
+    },
+    {
+        question: "How do we pronounce خِ ?",
+        answers: ["Khi", "Kha", "Khu", "Hi"],
+        correctIndex: 0,
+        explanation: "Kasrah gives the 'i' sound even with the strong خ."
+    },
+    {
+        question: "How do we pronounce خُ ?",
+        answers: ["Khu", "Khi", "Kha", "Hu"],
+        correctIndex: 0,
+        explanation: "Dhammah gives the rounded 'u': Khu."
+    },
+    {
+        question: "Which letter makes the heavy 'kh' sound?",
+        answers: ["خ", "ح", "ج", "ث"],
+        correctIndex: 0,
+        explanation: "خ is the only heavy 'kh' letter in this group."
+    },
+    {
+        question: "Which letter has the softest sound from the throat?",
+        answers: ["ح", "خ", "ج", "ث"],
+        correctIndex: 0,
+        explanation: "ح is a gentle breathy sound from the throat."
+    },
+    {
+        question: "Which letter sounds like the 'th' in 'think'?",
+        answers: ["ث", "ت", "ب", "ج"],
+        correctIndex: 0,
+        explanation: "ث is the Arabic 'soft th' letter."
     }
 ];
 
@@ -85,10 +167,11 @@ const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
 const currentQuestionSpan = document.getElementById('currentQuestion');
 const totalQuestionsSpan = document.getElementById('totalQuestions');
-const starsSpan = document.getElementById('stars');
-const progressBar = document.getElementById('progressBar');
 const questionText = document.getElementById('questionText');
 const answersGrid = document.getElementById('answersGrid');
+const progressBar = document.getElementById('progressBar');
+const starsSpan = document.getElementById('stars');
+
 const feedbackContainer = document.getElementById('feedback');
 const feedbackEmoji = document.getElementById('feedbackEmoji');
 const feedbackText = document.getElementById('feedbackText');
@@ -154,15 +237,14 @@ function showQuestion() {
     // Clear previous answers
     answersGrid.innerHTML = '';
     
-    // Map answers with original index and shuffle
-    const answersWithIndices = question.answers.map((answer, index) => ({
+    // Shuffle answers with originalIndex tracking
+    const answersWithIndex = question.answers.map((answer, index) => ({
         text: answer,
         originalIndex: index
     }));
+    const shuffledAnswers = shuffleArray(answersWithIndex);
     
-    const shuffledAnswers = shuffleArray(answersWithIndices);
-    
-    // Create answer buttons with Kahoot styling
+    // Create answer buttons
     shuffledAnswers.forEach((answerObj, index) => {
         const button = document.createElement('button');
         button.className = `answer-btn ${kahootColors[index]}`;
@@ -182,18 +264,16 @@ function showQuestion() {
         content.appendChild(text);
         button.appendChild(content);
         
-        button.addEventListener('click', () => selectAnswer(answerObj.originalIndex, button));
-        
+        button.addEventListener('click', () => selectAnswer(button, answerObj.originalIndex, question));
         answersGrid.appendChild(button);
     });
     
     // Hide feedback
-    feedbackContainer.classList.remove('show');
+    feedbackContainer.style.display = 'none';
     nextBtn.disabled = true;
 }
 
-function selectAnswer(selectedIndex, selectedButton) {
-    const question = questions[currentQuestionIndex];
+function selectAnswer(selectedButton, selectedIndex, question) {
     const isCorrect = selectedIndex === question.correctIndex;
     const correctAnswerText = question.answers[question.correctIndex];
     
@@ -228,7 +308,7 @@ function selectAnswer(selectedIndex, selectedButton) {
     }
     
     explanation.textContent = question.explanation;
-    feedbackContainer.classList.add('show');
+    feedbackContainer.style.display = 'block';
     nextBtn.disabled = false;
 }
 
@@ -256,15 +336,15 @@ function showResults() {
     
     let message = '';
     if (percentage === 100) {
-        message = '🕌 PERFECT! Allāhumma Bārik! You know all about the special day of Jumu\'ah!';
+        message = '🔤 PERFECT! Allāhumma Bārik! You can read all the letters perfectly!';
     } else if (percentage >= 80) {
-        message = '🎉 Excellent! You understand why Friday is so important! MashaAllah!';
+        message = '🎉 Excellent! You know your Arabic letters so well! MashaAllah!';
     } else if (percentage >= 60) {
-        message = '👍 Great job! Keep learning about our blessed Friday!';
+        message = '👍 Great job! Keep practicing your letters!';
     } else if (percentage >= 40) {
-        message = '😊 Good effort! Friday is the best day of the week!';
+        message = '😊 Good effort! Practice reading the letters more!';
     } else {
-        message = '🌈 Keep trying! Learn more about the importance of Jumu\'ah!';
+        message = '🌈 Keep trying! Practice your Arabic letters every day!';
     }
     
     resultMessage.textContent = message;
@@ -297,13 +377,13 @@ function startReviewMode() {
 // Event listeners
 startBtn.addEventListener('click', startQuiz);
 backBtn.addEventListener('click', () => {
-    window.location.href = 'year2-islamic-studies.html';
+    window.location.href = 'year2-term1.html';
 });
 nextBtn.addEventListener('click', nextQuestion);
 retryBtn.addEventListener('click', resetQuiz);
 reviewMistakesBtn.addEventListener('click', startReviewMode);
 backToLessonsBtn.addEventListener('click', () => {
-    window.location.href = 'year2-islamic-studies.html';
+    window.location.href = 'year2-term1.html';
 });
 
 // Initialize on page load
