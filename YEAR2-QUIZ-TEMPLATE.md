@@ -481,15 +481,24 @@ initQuiz();
 ### HTML File
 - [ ] Has `<div class="container">` as main wrapper
 - [ ] Start screen is `<div id="startScreen" class="screen active">`
+- [ ] Start screen has `<div class="start-content">` wrapper inside it
+- [ ] Topic bubbles use `<span class="bubble-emoji">` and `<span class="bubble-text">` structure
 - [ ] Button IDs are `startBtn` and `backBtn` (NOT startButton/backButton)
 - [ ] Quiz screen is `<div id="quizScreen" class="screen">`
-- [ ] Question element is `id="questionText"` (NOT id="question")
-- [ ] Has progress-section with question-counter AND star-display divs
-- [ ] Feedback has three parts: feedbackEmoji, feedbackText, explanation
+- [ ] Quiz header has `progress-section` div containing question-counter and star-display
+- [ ] Question counter uses `<span id="currentQuestion">` and `<span id="totalQuestions">`
+- [ ] Star display uses `<span id="stars">⭐ 0</span>`
+- [ ] Has `<div id="progressBar" class="progress-bar"></div>` in progress-bar-container
+- [ ] Question container has question-box div wrapping the question
+- [ ] Question element is `id="questionText"` with `class="question-text"` (NOT class="question")
+- [ ] Feedback uses `id="feedback"` with `class="feedback-container"` wrapper
+- [ ] Feedback has feedback-content div containing feedbackEmoji, feedbackText, explanation
+- [ ] Next button is inside feedback-container
 - [ ] Results screen is `<div id="resultsScreen" class="screen">`
 - [ ] Results uses totalStars, correctCount, incorrectCount IDs
 - [ ] All button IDs match script: retryBtn, reviewMistakesBtn, backToLessonsBtn
-- [ ] Arabic text uses 3rem font size in custom style block
+- [ ] Links to **Fredoka and Baloo 2** fonts (NOT Poppins or other fonts)
+- [ ] Custom styles use `.question-text` and `.bubble-emoji` selectors
 - [ ] Links to year2-kahoot-style.css
 
 ### JavaScript File  
@@ -502,6 +511,7 @@ initQuiz();
 - [ ] Back buttons link to correct parent page
 - [ ] Stars calculated at 10 per question
 - [ ] Result messages for different score percentages
+- [ ] Next button uses `nextBtn.style.display = 'none'/'block'` (NOT disabled property)
 
 ### Answer Distribution Best Practice
 For a 20-25 question quiz:
@@ -533,6 +543,17 @@ These files have the correct structure and should be used as the template for al
 7. ❌ Using `startButton` instead of `startBtn`
 8. ❌ Forgetting the star-display div in quiz header
 9. ❌ Missing feedbackEmoji, feedbackText, explanation structure
+10. ❌ Using `nextBtn.disabled = true/false` instead of `nextBtn.style.display = 'none'/'block'`
+11. ❌ Using `class="question"` instead of `class="question-text"` on question element
+12. ❌ Using **Poppins** font instead of **Fredoka and Baloo 2** fonts
+13. ❌ Using `.question` or `.topic-bubble` CSS selectors instead of `.question-text` and `.bubble-emoji`
+14. ❌ Missing `<div class="start-content">` wrapper inside start screen
+15. ❌ Not using `<span class="bubble-emoji">` and `<span class="bubble-text">` in topic bubbles
+16. ❌ Wrong quiz header structure - must have `progress-section` containing `currentQuestion`/`totalQuestions` spans
+17. ❌ Missing `progress-bar-container` with `progressBar` div
+18. ❌ Missing `question-container` and `question-box` wrappers around question
+19. ❌ Feedback not wrapped in `feedback-container` with `feedback-content` div inside
+20. ❌ Using simple button structure instead of Kahoot-style colored buttons with shapes
 10. ❌ Using old result structure without trophy-emoji and stars-display-big
 
 ---

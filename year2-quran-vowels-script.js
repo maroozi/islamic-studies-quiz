@@ -164,11 +164,17 @@ const questions = [
     }
 ];
 
-// DOM Elements
+let currentQuestionIndex = 0;
+let score = 0;
+let stars = 0;
+let wrongAnswers = [];
+let isReviewMode = false;
+let reviewQuestions = [];
+
+// DOM elements
 const startScreen = document.getElementById('startScreen');
 const quizScreen = document.getElementById('quizScreen');
 const resultsScreen = document.getElementById('resultsScreen');
-
 const startBtn = document.getElementById('startBtn');
 const backBtn = document.getElementById('backBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -176,36 +182,46 @@ const retryBtn = document.getElementById('retryBtn');
 const reviewMistakesBtn = document.getElementById('reviewMistakesBtn');
 const backToLessonsBtn = document.getElementById('backToLessonsBtn');
 
+const currentQuestionSpan = document.getElementById('currentQuestion');
+const totalQuestionsSpan = document.getElementById('totalQuestions');
 const questionText = document.getElementById('questionText');
 const answersGrid = document.getElementById('answersGrid');
+const progressBar = document.getElementById('progressBar');
+const starsSpan = document.getElementById('stars');
+
+const feedbackContainer = document.getElementById('feedback');
 const feedbackEmoji = document.getElementById('feedbackEmoji');
 const feedbackText = document.getElementById('feedbackText');
 const explanation = document.getElementById('explanation');
 
-const questionCounter = document.getElementById('question-counter');
-const starsDisplay = document.getElementById('star-display');
-
-const totalStars = document.getElementById('totalStars');
-const correctCount = document.getElementById('correctCount');
-const incorrectCount = document.getElementById('incorrectCount');
+const totalStarsSpan = document.getElementById('totalStars');
+const correctCountSpan = document.getElementById('correctCount');
+const incorrectCountSpan = document.getElementById('incorrectCount');
 const resultMessage = document.getElementById('resultMessage');
 
-// Game State
-let currentQuestionIndex = 0;
-let correctAnswers = 0;
-let wrongAnswers = 0;
-let userAnswers = [];
-let reviewMode = false;
-let reviewQuestions = [];
+// Fisher-Yates shuffle algorithm
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 
-// Start Quiz
+// Initialize quiz
+function initQuiz() {
+    totalQuestionsSpan.textContent = questions.length;
+}
+
+// Start quiz
 startBtn.addEventListener('click', () => {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
-    loadQuestion();
+    showQuestion();
 });
 
-// Back to Lessons
+// Back to lessons
 backBtn.addEventListener('click', () => {
     window.location.href = 'year2-term1.html';
 });
@@ -214,152 +230,175 @@ backToLessonsBtn.addEventListener('click', () => {
     window.location.href = 'year2-term1.html';
 });
 
-// Load Question
-function loadQuestion() {
-    const questionData = reviewMode 
-        ? questions[reviewQuestions[currentQuestionIndex]] 
-        : questions[currentQuestionIndex];
+// Kahoot color scheme
+const kahootColors = ['red', 'blue', 'yellow', 'green'];
+const shapeSymbols = {
+    red: '🔺',
+    blue: '💠',
+    yellow: '⭐',
+    green: '🔷'
+};
+
+function showQuestion() {
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    const question = questionsArray[currentQuestionIndex];
     
-    questionText.textContent = questionData.question;
+    // Update question text
+    questionText.textContent = question.question;
+    
+    // Update progress
+    currentQuestionSpan.textContent = currentQuestionIndex + 1;
+    const progress = ((currentQuestionIndex + 1) / questionsArray.length) * 100;
+    progressBar.style.width = `${progress}%`;
+    
+    // Clear previous answers
     answersGrid.innerHTML = '';
     
-    // Update question counter
-    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
-    questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
-    
-    // Update star display
-    starsDisplay.innerHTML = '★'.repeat(correctAnswers) + '☆'.repeat(totalQuestions - correctAnswers - wrongAnswers);
+    // Shuffle answers with originalIndex tracking
+    const answersWithIndex = question.answers.map((answer, index) => ({
+        text: answer,
+        originalIndex: index
+    }));
+    const shuffledAnswers = shuffleArray(answersWithIndex);
     
     // Create answer buttons
-    questionData.answers.forEach((answer, index) => {
+    shuffledAnswers.forEach((answerObj, index) => {
         const button = document.createElement('button');
-        button.classList.add('answer-bubble');
-        button.textContent = answer;
-        button.addEventListener('click', () => checkAnswer(index));
+        button.className = `answer-btn ${kahootColors[index]}`;
+        
+        const content = document.createElement('div');
+        content.className = 'answer-btn-content';
+        
+        const shape = document.createElement('div');
+        shape.className = 'answer-shape';
+        shape.textContent = shapeSymbols[kahootColors[index]];
+        
+        const text = document.createElement('div');
+        text.className = 'answer-text';
+        text.textContent = answerObj.text;
+        
+        content.appendChild(shape);
+        content.appendChild(text);
+        button.appendChild(content);
+        
+        button.addEventListener('click', () => selectAnswer(button, answerObj.originalIndex, question));
         answersGrid.appendChild(button);
     });
     
     // Hide feedback and next button
-    feedbackEmoji.style.display = 'none';
-    feedbackText.style.display = 'none';
-    explanation.style.display = 'none';
+    feedbackContainer.style.display = 'none';
     nextBtn.style.display = 'none';
 }
 
-// Check Answer
-function checkAnswer(selectedIndex) {
-    const questionData = reviewMode 
-        ? questions[reviewQuestions[currentQuestionIndex]] 
-        : questions[currentQuestionIndex];
-    
-    const buttons = answersGrid.querySelectorAll('.answer-bubble');
+function selectAnswer(selectedButton, selectedIndex, question) {
+    const isCorrect = selectedIndex === question.correctIndex;
+    const correctAnswerText = question.answers[question.correctIndex];
     
     // Disable all buttons
-    buttons.forEach(btn => btn.disabled = true);
-    
-    // Check if correct
-    if (selectedIndex === questionData.correctIndex) {
-        buttons[selectedIndex].classList.add('correct');
-        feedbackEmoji.textContent = '✓';
-        feedbackEmoji.className = 'feedback-emoji correct';
-        feedbackText.textContent = 'Correct!';
-        feedbackText.className = 'feedback-text correct';
-        correctAnswers++;
-        
-        if (!reviewMode) {
-            userAnswers.push({ questionIndex: currentQuestionIndex, correct: true });
+    const allButtons = answersGrid.querySelectorAll('.answer-btn');
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        // Highlight correct answer by matching text
+        const btnText = btn.querySelector('.answer-text').textContent;
+        if (btnText === correctAnswerText) {
+            btn.classList.add('correct');
         }
-    } else {
-        buttons[selectedIndex].classList.add('wrong');
-        buttons[questionData.correctIndex].classList.add('correct');
-        feedbackEmoji.textContent = '✗';
-        feedbackEmoji.className = 'feedback-emoji wrong';
-        feedbackText.textContent = 'Incorrect';
-        feedbackText.className = 'feedback-text wrong';
-        wrongAnswers++;
-        
-        if (!reviewMode) {
-            userAnswers.push({ questionIndex: currentQuestionIndex, correct: false });
-        }
-    }
+    });
     
     // Show feedback
-    feedbackEmoji.style.display = 'block';
-    feedbackText.style.display = 'block';
-    explanation.textContent = questionData.explanation;
-    explanation.style.display = 'block';
+    if (isCorrect) {
+        selectedButton.classList.add('correct');
+        score++;
+        stars += 10;
+        starsSpan.textContent = `⭐ ${stars}`;
+        feedbackEmoji.textContent = '🎉';
+        feedbackText.textContent = 'Correct! MashaAllah!';
+        feedbackText.style.color = '#11998e';
+    } else {
+        selectedButton.classList.add('wrong');
+        if (!isReviewMode) {
+            wrongAnswers.push(question);
+        }
+        feedbackEmoji.textContent = '😢';
+        feedbackText.textContent = 'Not quite! Keep learning!';
+        feedbackText.style.color = '#eb3349';
+    }
+    
+    explanation.textContent = question.explanation;
+    feedbackContainer.style.display = 'block';
     nextBtn.style.display = 'block';
 }
 
-// Next Question
-nextBtn.addEventListener('click', () => {
+function nextQuestion() {
     currentQuestionIndex++;
-    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
     
-    if (currentQuestionIndex < totalQuestions) {
-        loadQuestion();
+    if (currentQuestionIndex < questionsArray.length) {
+        showQuestion();
     } else {
         showResults();
     }
-});
+}
 
-// Show Results
 function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
-    const totalQuestions = reviewMode ? reviewQuestions.length : questions.length;
-    const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    totalStarsSpan.textContent = stars;
+    correctCountSpan.textContent = score;
+    incorrectCountSpan.textContent = questionsArray.length - score;
     
-    totalStars.textContent = '★'.repeat(correctAnswers);
-    correctCount.textContent = correctAnswers;
-    incorrectCount.textContent = wrongAnswers;
+    const percentage = (score / questionsArray.length) * 100;
     
-    // Result messages
+    // Result message based on score
     if (percentage === 100) {
         resultMessage.textContent = '🌟 Perfect! You know all the short vowels!';
     } else if (percentage >= 80) {
-        resultMessage.textContent = '⭐ Excellent work!';
+        resultMessage.textContent = '⭐ Excellent! You read very well!';
     } else if (percentage >= 60) {
-        resultMessage.textContent = 'Good job! Keep practicing.';
+        resultMessage.textContent = '👍 Good job! Keep practicing the vowels!';
     } else {
-        resultMessage.textContent = 'Keep trying! Practice makes perfect.';
+        resultMessage.textContent = '📖 Keep learning! Review the harakat.';
     }
     
-    // Show/hide review button
-    if (!reviewMode && wrongAnswers > 0) {
+    // Show review button only if there are wrong answers and not in review mode
+    if (!isReviewMode && wrongAnswers.length > 0) {
         reviewMistakesBtn.style.display = 'inline-block';
     } else {
         reviewMistakesBtn.style.display = 'none';
     }
 }
 
-// Retry Quiz
-retryBtn.addEventListener('click', () => {
+function resetQuiz() {
     currentQuestionIndex = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
-    userAnswers = [];
-    reviewMode = false;
+    score = 0;
+    stars = 0;
+    wrongAnswers = [];
+    isReviewMode = false;
     reviewQuestions = [];
     
     resultsScreen.classList.remove('active');
     quizScreen.classList.add('active');
-    loadQuestion();
-});
+    showQuestion();
+}
 
-// Review Mistakes
-reviewMistakesBtn.addEventListener('click', () => {
-    reviewMode = true;
-    reviewQuestions = userAnswers
-        .filter(answer => !answer.correct)
-        .map(answer => answer.questionIndex);
-    
+function reviewMistakes() {
+    isReviewMode = true;
+    reviewQuestions = [...wrongAnswers];
     currentQuestionIndex = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
+    score = 0;
+    stars = 0;
     
     resultsScreen.classList.remove('active');
     quizScreen.classList.add('active');
-    loadQuestion();
-});
+    showQuestion();
+}
+
+// Event listeners
+nextBtn.addEventListener('click', nextQuestion);
+retryBtn.addEventListener('click', resetQuiz);
+reviewMistakesBtn.addEventListener('click', reviewMistakes);
+
+// Initialize
+initQuiz();

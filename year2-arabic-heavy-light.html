@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Year 2: Arabic Letters - Heavy and Light</title>
     <link rel="stylesheet" href="year2-kahoot-style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .question {
-            font-size: 3rem;
+        /* Make Arabic letters bigger and more visible */
+        .question-text {
+            font-size: 3rem !important;
+            line-height: 1.4 !important;
         }
-        .topic-bubble {
-            font-size: 2.5rem;
+        
+        /* Make Arabic letters in topic bubbles bigger too */
+        .bubble-emoji {
+            font-size: 2.5rem !important;
         }
     </style>
 </head>
@@ -19,69 +23,90 @@
     <div class="container">
         <!-- Start Screen -->
         <div id="startScreen" class="screen active">
-            <div class="title-section">
-                <h1 class="game-title">🔤 Arabic – Heavy and Light Letters!</h1>
-                <p class="subtitle">Year 2 – Arabic Term 1</p>
-                <div class="fun-badge">✨ Mufakhkham & Murakhkhaq ✨</div>
+            <div class="start-content">
+                <div class="title-section">
+                    <h1 class="game-title">🔤 Arabic – Heavy and Light Letters!</h1>
+                    <p class="subtitle">Year 2 – Arabic Term 1</p>
+                    <div class="fun-badge">✨ Mufakhkham & Murakhkhaq ✨</div>
+                </div>
+                
+                <div class="lesson-preview">
+                    <h2>Heavy vs Light:</h2>
+                    <div class="topic-grid">
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="bubble-emoji">💪</span>
+                            <span class="bubble-text">Heavy</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="bubble-emoji">🪶</span>
+                            <span class="bubble-text">Light</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span class="bubble-emoji">خ ص ض</span>
+                            <span class="bubble-text">Heavy</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <span class="bubble-emoji">ط ظ غ ق</span>
+                            <span class="bubble-text">Heavy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-info">
+                    <div class="info-card">
+                        <span class="info-emoji">📝</span>
+                        <span class="info-text">15 Questions</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">⭐</span>
+                        <span class="info-text">Earn Stars</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-emoji">🎯</span>
+                        <span class="info-text">Heavy vs Light</span>
+                    </div>
+                </div>
+
+                <button id="startBtn" class="start-button">
+                    <span class="button-text">🚀 Let's Play!</span>
+                </button>
+                
+                <button id="backBtn" class="back-button">← Back to Lessons</button>
             </div>
-            
-            <div class="lesson-preview">
-                <div class="topic-grid">
-                    <div class="topic-bubble" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        💪
-                    </div>
-                    <div class="topic-bubble" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        🪶
-                    </div>
-                    <div class="topic-bubble" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        خ ص ض
-                    </div>
-                    <div class="topic-bubble" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        ط ظ غ ق
-                    </div>
-                </div>
-            </div>
-            
-            <div class="info-cards">
-                <div class="info-card">
-                    <div class="info-emoji">📝</div>
-                    <div class="info-text">15 Questions</div>
-                </div>
-                <div class="info-card">
-                    <div class="info-emoji">⭐</div>
-                    <div class="info-text">Earn Stars</div>
-                </div>
-                <div class="info-card">
-                    <div class="info-emoji">🎯</div>
-                    <div class="info-text">Heavy vs Light</div>
-                </div>
-            </div>
-            
-            <button id="startBtn" class="start-button">
-                <span class="button-text">🚀 Start Learning! →</span>
-            </button>
-            <button id="backBtn" class="back-button">
-                <span class="button-text">← Back to Lessons</span>
-            </button>
         </div>
 
         <!-- Quiz Screen -->
         <div id="quizScreen" class="screen">
             <div class="quiz-header">
-                <div id="question-counter" class="question-counter">Question 1 of 15</div>
-                <div id="star-display" class="star-display">☆☆☆☆☆</div>
+                <div class="progress-section">
+                    <div class="question-counter">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">15</span>
+                    </div>
+                    <div class="star-display">
+                        <span id="stars">⭐ 0</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
             </div>
 
-            <div class="question-section">
-                <h2 id="questionText" class="question">Question appears here</h2>
-                <div id="answersGrid" class="answers-grid"></div>
-                
-                <div class="feedback-section">
-                    <div id="feedbackEmoji" class="feedback-emoji"></div>
-                    <div id="feedbackText" class="feedback-text"></div>
+            <div class="question-container">
+                <div class="question-box">
+                    <h2 id="questionText" class="question-text"></h2>
+                </div>
+
+                <div id="answersGrid" class="answers-grid">
+                    <!-- Kahoot-style colored answer buttons will be inserted here -->
+                </div>
+            </div>
+
+            <div id="feedback" class="feedback-container">
+                <div class="feedback-content">
+                    <span id="feedbackEmoji" class="feedback-emoji"></span>
+                    <p id="feedbackText" class="feedback-text"></p>
                     <div id="explanation" class="explanation"></div>
                 </div>
-                
                 <button id="nextBtn" class="next-button">Next Question →</button>
             </div>
         </div>

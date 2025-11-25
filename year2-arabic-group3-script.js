@@ -267,9 +267,9 @@ function showQuestion() {
         answersGrid.appendChild(button);
     });
     
-    // Hide feedback
+    // Hide feedback and next button
     feedbackContainer.style.display = 'none';
-    nextBtn.disabled = true;
+    nextBtn.style.display = 'none';
 }
 
 function selectAnswer(selectedButton, selectedIndex, question) {
@@ -308,7 +308,7 @@ function selectAnswer(selectedButton, selectedIndex, question) {
     
     explanation.textContent = question.explanation;
     feedbackContainer.style.display = 'block';
-    nextBtn.disabled = false;
+    nextBtn.style.display = 'block';
 }
 
 function nextQuestion() {
