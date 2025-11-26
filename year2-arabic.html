@@ -103,17 +103,147 @@
         .lesson-badge.coming-soon {
             background: #95a5a6;
         }
+
+        .category-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 4px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-card:nth-child(1) {
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .category-card:nth-child(1):hover {
+            border-color: #667eea;
+        }
+
+        .category-card:nth-child(2) {
+            border-color: rgba(245, 147, 251, 0.3);
+        }
+
+        .category-card:nth-child(2):hover {
+            border-color: #f593fb;
+        }
+
+        .category-card:nth-child(3) {
+            border-color: rgba(245, 87, 108, 0.3);
+        }
+
+        .category-card:nth-child(3):hover {
+            border-color: #f5576c;
+        }
+
+        .category-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .category-card:nth-child(2) .category-icon {
+            animation-delay: 0.5s;
+        }
+
+        .category-card:nth-child(3) .category-icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .category-card-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .category-card-desc {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .category-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+            display: inline-block;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.5);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="lessonsScreen" class="screen active">
             <div class="subject-selection-box">
-                <div class="main-icon">✍️</div>
+                <div class="main-icon">&#x270D;&#xFE0F;</div>
                 <h1 style="font-size: 2.5em; font-weight: 800; color: #2c3e50; margin: 15px 0;">Arabic Letters</h1>
-                <p class="subtitle">Year 2 – Learn to read letters with short vowels!</p>
+                <p class="subtitle">Year 2 - Choose your learning mode!</p>
                 
-                <div class="lessons-grid">
+                <div class="category-cards">
+                    <div class="category-card" onclick="showReadingLessons()">
+                        <div class="category-icon">&#x1F4DA;</div>
+                        <h3 class="category-card-title">Reading Practice</h3>
+                        <p class="category-card-desc">Learn to recognise and read all 28 Arabic letters with short vowels</p>
+                        <button class="category-btn">Start Reading &#x1F4D6;</button>
+                    </div>
+
+                    <div class="category-card" onclick="window.location.href='year2-writing-group1.html'">
+                        <div class="category-icon">&#x1F9E0;</div>
+                        <h3 class="category-card-title">Writing Recognition</h3>
+                        <p class="category-card-desc">Identify the correct forms of letters (isolated, beginning, middle, end)</p>
+                        <button class="category-btn">Test Knowledge &#x1F3AF;</button>
+                    </div>
+
+                    <div class="category-card" onclick="window.location.href='year2-writing-group1-practice.html'">
+                        <div class="category-icon">&#x270D;&#xFE0F;</div>
+                        <h3 class="category-card-title">Writing Practice</h3>
+                        <p class="category-card-desc">Practice writing Arabic letters with your finger, stylus, or mouse on canvas</p>
+                        <button class="category-btn">Practice Writing &#x2728;</button>
+                    </div>
+                </div>
+
+                <div id="readingLessons" class="lessons-grid" style="display: none; margin-top: 30px;">
+                    <h2 style="grid-column: 1 / -1; text-align: center; color: #2c3e50; margin-bottom: 20px;">&#x1F4DA; Choose a Letter Group</h2>
+                    
                     <!-- Group 1: أ ب ت ث ج ح خ -->
                     <div class="lesson-card" onclick="window.location.href='year2-arabic-group1.html'">
                         <div class="lesson-number">1</div>
@@ -180,10 +310,22 @@
                     </div>
                 </div>
                 
-                <button onclick="window.location.href='year2-term1.html'" class="back-btn" style="margin-top: 30px;">← Back to Subjects</button>
-                <p class="encouragement">🎉 All 28 Arabic letters complete! Masha'Allah! 📖</p>
+                <button onclick="window.location.href='year2-term1.html'" class="back-btn" style="margin-top: 30px;">Back to Subjects</button>
+                <p class="encouragement">All 28 Arabic letters complete! Masha Allah!</p>
             </div>
         </div>
     </div>
+
+    <script>
+        function showReadingLessons() {
+            const lessonsDiv = document.getElementById('readingLessons');
+            const cardsDiv = document.querySelector('.category-cards');
+            
+            if (lessonsDiv.style.display === 'none') {
+                lessonsDiv.style.display = 'grid';
+                cardsDiv.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
