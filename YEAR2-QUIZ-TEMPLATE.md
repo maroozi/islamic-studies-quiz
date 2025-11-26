@@ -11,6 +11,16 @@ Every Year 2 quiz requires **TWO files**:
 1. `[quiz-name].html` - The HTML interface
 2. `[quiz-name]-script.js` - The JavaScript logic
 
+### Shared Module (Optional but Recommended)
+For new quizzes, you can use the shared functions module to avoid code duplication:
+- `shared-quiz-functions.js` - Common functions for all quizzes (shuffle, buttons, feedback, etc.)
+
+**To use the shared module**, add this in your HTML before your quiz script:
+```html
+<script src="shared-quiz-functions.js"></script>
+<script src="[your-quiz]-script.js"></script>
+```
+
 ---
 
 ## HTML TEMPLATE STRUCTURE
