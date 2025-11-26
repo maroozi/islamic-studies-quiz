@@ -481,6 +481,8 @@ body {
     font-family: 'Fredoka', cursive;
     box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
     transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .next-button:hover {
