@@ -308,7 +308,9 @@ function nextQuestion() {
 // Show results
 function showResults() {
     document.getElementById('writeScreen').classList.add('hidden');
+    document.getElementById('writeScreen').classList.remove('active');
     document.getElementById('resultsScreen').classList.remove('hidden');
+    document.getElementById('resultsScreen').classList.add('active');
     
     // Update results
     document.getElementById('finalStars').textContent = score;

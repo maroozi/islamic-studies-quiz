@@ -251,11 +251,14 @@ function showResults() {
     resultsScreen.classList.add('active');
     
     const questionsArray = isReviewMode ? reviewQuestions : questions;
-    totalStarsSpan.textContent = stars;
-    correctCountSpan.textContent = score;
-    incorrectCountSpan.textContent = questionsArray.length - score;
+    const correctAnswers = score; // score is the number of correct answers
+    const incorrectAnswers = questionsArray.length - correctAnswers;
     
-    const percentage = (score / questionsArray.length) * 100;
+    totalStarsSpan.textContent = stars;
+    correctCountSpan.textContent = correctAnswers;
+    incorrectCountSpan.textContent = incorrectAnswers;
+    
+    const percentage = (correctAnswers / questionsArray.length) * 100;
     resultMessage.textContent = getResultsMessage(percentage);
     
     if (wrongAnswers.length > 0 && !isReviewMode) {
