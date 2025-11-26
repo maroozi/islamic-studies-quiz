@@ -4,43 +4,43 @@
 // Writing data for Group 4
 const arabicWritingGroup4Data = [
   // Kāf (ك) - All four forms
-  { id: "kaf-isolated", englishPrompt: "Write the letter kāf in isolated form", expectedAnswer: "ك" },
-  { id: "kaf-beginning", englishPrompt: "Write the letter kāf at the beginning of a word", expectedAnswer: "كـ" },
-  { id: "kaf-middle", englishPrompt: "Write the letter kāf in the middle of a word", expectedAnswer: "ـكـ" },
-  { id: "kaf-end", englishPrompt: "Write the letter kāf at the end of a word", expectedAnswer: "ـك" },
+  { id: "kaf-isolated", englishPrompt: "Select the letter kāf in isolated form", expectedAnswer: "ك" },
+  { id: "kaf-beginning", englishPrompt: "Select the letter kāf at the beginning of a word", expectedAnswer: "كـ" },
+  { id: "kaf-middle", englishPrompt: "Select the letter kāf in the middle of a word", expectedAnswer: "ـكـ" },
+  { id: "kaf-end", englishPrompt: "Select the letter kāf at the end of a word", expectedAnswer: "ـك" },
   
   // Lām (ل) - All four forms
-  { id: "lam-isolated", englishPrompt: "Write the letter lām in isolated form", expectedAnswer: "ل" },
-  { id: "lam-beginning", englishPrompt: "Write the letter lām at the beginning of a word", expectedAnswer: "لـ" },
-  { id: "lam-middle", englishPrompt: "Write the letter lām in the middle of a word", expectedAnswer: "ـلـ" },
-  { id: "lam-end", englishPrompt: "Write the letter lām at the end of a word", expectedAnswer: "ـل" },
+  { id: "lam-isolated", englishPrompt: "Select the letter lām in isolated form", expectedAnswer: "ل" },
+  { id: "lam-beginning", englishPrompt: "Select the letter lām at the beginning of a word", expectedAnswer: "لـ" },
+  { id: "lam-middle", englishPrompt: "Select the letter lām in the middle of a word", expectedAnswer: "ـلـ" },
+  { id: "lam-end", englishPrompt: "Select the letter lām at the end of a word", expectedAnswer: "ـل" },
   
   // Mīm (م) - All four forms
-  { id: "meem-isolated", englishPrompt: "Write the letter mīm in isolated form", expectedAnswer: "م" },
-  { id: "meem-beginning", englishPrompt: "Write the letter mīm at the beginning of a word", expectedAnswer: "مـ" },
-  { id: "meem-middle", englishPrompt: "Write the letter mīm in the middle of a word", expectedAnswer: "ـمـ" },
-  { id: "meem-end", englishPrompt: "Write the letter mīm at the end of a word", expectedAnswer: "ـم" },
+  { id: "meem-isolated", englishPrompt: "Select the letter mīm in isolated form", expectedAnswer: "م" },
+  { id: "meem-beginning", englishPrompt: "Select the letter mīm at the beginning of a word", expectedAnswer: "مـ" },
+  { id: "meem-middle", englishPrompt: "Select the letter mīm in the middle of a word", expectedAnswer: "ـمـ" },
+  { id: "meem-end", englishPrompt: "Select the letter mīm at the end of a word", expectedAnswer: "ـم" },
   
   // Nūn (ن) - All four forms
-  { id: "noon-isolated", englishPrompt: "Write the letter nūn in isolated form", expectedAnswer: "ن" },
-  { id: "noon-beginning", englishPrompt: "Write the letter nūn at the beginning of a word", expectedAnswer: "نـ" },
-  { id: "noon-middle", englishPrompt: "Write the letter nūn in the middle of a word", expectedAnswer: "ـنـ" },
-  { id: "noon-end", englishPrompt: "Write the letter nūn at the end of a word", expectedAnswer: "ـن" },
+  { id: "noon-isolated", englishPrompt: "Select the letter nūn in isolated form", expectedAnswer: "ن" },
+  { id: "noon-beginning", englishPrompt: "Select the letter nūn at the beginning of a word", expectedAnswer: "نـ" },
+  { id: "noon-middle", englishPrompt: "Select the letter nūn in the middle of a word", expectedAnswer: "ـنـ" },
+  { id: "noon-end", englishPrompt: "Select the letter nūn at the end of a word", expectedAnswer: "ـن" },
   
   // Hā' (ه) - All four forms
-  { id: "haa-isolated", englishPrompt: "Write the letter hā' in isolated form", expectedAnswer: "ه" },
-  { id: "haa-beginning", englishPrompt: "Write the letter hā' at the beginning of a word", expectedAnswer: "هـ" },
-  { id: "haa-middle", englishPrompt: "Write the letter hā' in the middle of a word", expectedAnswer: "ـهـ" },
-  { id: "haa-end", englishPrompt: "Write the letter hā' at the end of a word", expectedAnswer: "ـه" },
+  { id: "haa-isolated", englishPrompt: "Select the letter hā' in isolated form", expectedAnswer: "ه" },
+  { id: "haa-beginning", englishPrompt: "Select the letter hā' at the beginning of a word", expectedAnswer: "هـ" },
+  { id: "haa-middle", englishPrompt: "Select the letter hā' in the middle of a word", expectedAnswer: "ـهـ" },
+  { id: "haa-end", englishPrompt: "Select the letter hā' at the end of a word", expectedAnswer: "ـه" },
   
   // Wāw (و) - Only isolated and end forms (non-connector)
-  { id: "waw-isolated", englishPrompt: "Write the letter wāw in isolated form", expectedAnswer: "و" },
-  { id: "waw-end", englishPrompt: "Write the letter wāw at the end of a word", expectedAnswer: "ـو" },
+  { id: "waw-isolated", englishPrompt: "Select the letter wāw in isolated form", expectedAnswer: "و" },
+  { id: "waw-end", englishPrompt: "Select the letter wāw at the end of a word", expectedAnswer: "ـو" },
   
   // Yā' (ي) - All four forms
-  { id: "yaa-isolated", englishPrompt: "Write the letter yā' in isolated form", expectedAnswer: "ي" },
-  { id: "yaa-beginning", englishPrompt: "Write the letter yā' at the beginning of a word", expectedAnswer: "يـ" },
-  { id: "yaa-middle", englishPrompt: "Write the letter yā' in the middle of a word", expectedAnswer: "ـيـ" }
+  { id: "yaa-isolated", englishPrompt: "Select the letter yā' in isolated form", expectedAnswer: "ي" },
+  { id: "yaa-beginning", englishPrompt: "Select the letter yā' at the beginning of a word", expectedAnswer: "يـ" },
+  { id: "yaa-middle", englishPrompt: "Select the letter yā' in the middle of a word", expectedAnswer: "ـيـ" }
 ];
 
 // Common wrong answers for letter forms
