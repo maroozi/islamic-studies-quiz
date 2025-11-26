@@ -190,7 +190,7 @@ function selectAnswer(selectedIndex, selectedButton) {
     explanation.style.display = 'block';
     
     // Show next button
-    nextBtn.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
 }
 
 // Next Question

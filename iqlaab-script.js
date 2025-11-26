@@ -266,7 +266,7 @@ function selectAnswer(buttonIndex, originalIndex, correctIndex) {
     answersContainer.appendChild(explanation);
     
     // Show next button
-    nextBtn.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
 }
 
 // Next Question

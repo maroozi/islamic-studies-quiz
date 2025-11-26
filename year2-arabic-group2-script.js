@@ -314,7 +314,7 @@ function selectAnswer(selectedButton, selectedIndex, question) {
     
     explanation.textContent = question.explanation;
     feedbackContainer.style.display = 'block';
-    nextBtn.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
 }
 
 function nextQuestion() {
