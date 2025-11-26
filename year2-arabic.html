@@ -226,14 +226,14 @@
                         <button class="category-btn">Start Reading &#x1F4D6;</button>
                     </div>
 
-                    <div class="category-card" onclick="window.location.href='year2-writing-group1.html'">
+                    <div class="category-card" onclick="showWritingRecognition()">
                         <div class="category-icon">&#x1F9E0;</div>
                         <h3 class="category-card-title">Writing Recognition</h3>
                         <p class="category-card-desc">Identify the correct forms of letters (isolated, beginning, middle, end)</p>
                         <button class="category-btn">Test Knowledge &#x1F3AF;</button>
                     </div>
 
-                    <div class="category-card" onclick="window.location.href='year2-writing-group1-practice.html'">
+                    <div class="category-card" onclick="showWritingPractice()">
                         <div class="category-icon">&#x270D;&#xFE0F;</div>
                         <h3 class="category-card-title">Writing Practice</h3>
                         <p class="category-card-desc">Practice writing Arabic letters with your finger, stylus, or mouse on canvas</p>
@@ -309,6 +309,120 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Writing Recognition Lessons Grid -->
+                <div id="writingRecognition" class="lessons-grid" style="display: none; margin-top: 30px;">
+                    <h2 style="grid-column: 1 / -1; text-align: center; color: #2c3e50; margin-bottom: 20px;">&#x1F9E0; Choose a Writing Recognition Quiz</h2>
+                    
+                    <!-- Group 1: أ ب ت ث ج ح خ -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group1.html'">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-emoji">🧠</div>
+                        <h3 class="lesson-title">Group 1 - أ ب ت ث ج ح خ</h3>
+                        <p class="lesson-description">Identify correct letter forms (isolated, beginning, middle, end).</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 25 Questions</div>
+                            <div class="lesson-stat">⭐ 250 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 2: د ذ ر ز س ش ص -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group2.html'">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-emoji">🧠</div>
+                        <h3 class="lesson-title">Group 2 - د ذ ر ز س ش ص</h3>
+                        <p class="lesson-description">Identify correct forms of د ذ ر ز س ش ص letters.</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 16 Questions</div>
+                            <div class="lesson-stat">⭐ 160 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 3: ض ط ظ ع غ ف ق -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group3.html'">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-emoji">🧠</div>
+                        <h3 class="lesson-title">Group 3 - ض ط ظ ع غ ف ق</h3>
+                        <p class="lesson-description">Identify correct forms of ض ط ظ ع غ ف ق letters.</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 28 Questions</div>
+                            <div class="lesson-stat">⭐ 280 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 4: ك ل م ن ه و ي -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group4.html'">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-emoji">🧠</div>
+                        <h3 class="lesson-title">Group 4 - ك ل م ن ه و ي</h3>
+                        <p class="lesson-description">Identify correct forms of ك ل م ن ه و ي letters.</p>
+                        <div class="lesson-badge">✨ Kahoot Style</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 25 Questions</div>
+                            <div class="lesson-stat">⭐ 250 Stars</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Writing Practice Lessons Grid -->
+                <div id="writingPractice" class="lessons-grid" style="display: none; margin-top: 30px;">
+                    <h2 style="grid-column: 1 / -1; text-align: center; color: #2c3e50; margin-bottom: 20px;">&#x270D;&#xFE0F; Choose a Writing Practice Quiz</h2>
+                    
+                    <!-- Group 1: أ ب ت ث ج ح خ -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group1-practice.html'">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-emoji">✍️</div>
+                        <h3 class="lesson-title">Group 1 - أ ب ت ث ج ح خ</h3>
+                        <p class="lesson-description">Practice writing letters with your finger, stylus, or mouse.</p>
+                        <div class="lesson-badge">✨ Canvas Drawing</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 25 Questions</div>
+                            <div class="lesson-stat">⭐ 250 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 2: د ذ ر ز س ش ص -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group2-practice.html'">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-emoji">✍️</div>
+                        <h3 class="lesson-title">Group 2 - د ذ ر ز س ش ص</h3>
+                        <p class="lesson-description">Practice writing د ذ ر ز س ش ص letter forms.</p>
+                        <div class="lesson-badge">✨ Canvas Drawing</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 16 Questions</div>
+                            <div class="lesson-stat">⭐ 160 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 3: ض ط ظ ع غ ف ق -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group3-practice.html'">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-emoji">✍️</div>
+                        <h3 class="lesson-title">Group 3 - ض ط ظ ع غ ف ق</h3>
+                        <p class="lesson-description">Practice writing ض ط ظ ع غ ف ق letter forms.</p>
+                        <div class="lesson-badge">✨ Canvas Drawing</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 28 Questions</div>
+                            <div class="lesson-stat">⭐ 280 Stars</div>
+                        </div>
+                    </div>
+
+                    <!-- Group 4: ك ل م ن ه و ي -->
+                    <div class="lesson-card" onclick="window.location.href='year2-writing-group4-practice.html'">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-emoji">✍️</div>
+                        <h3 class="lesson-title">Group 4 - ك ل م ن ه و ي</h3>
+                        <p class="lesson-description">Practice writing ك ل م ن ه و ي letter forms.</p>
+                        <div class="lesson-badge">✨ Canvas Drawing</div>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">📝 25 Questions</div>
+                            <div class="lesson-stat">⭐ 250 Stars</div>
+                        </div>
+                    </div>
+                </div>
                 
                 <button onclick="window.location.href='year2-term1.html'" class="back-btn" style="margin-top: 30px;">Back to Subjects</button>
                 <p class="encouragement">All 28 Arabic letters complete! Masha Allah!</p>
@@ -318,13 +432,39 @@
 
     <script>
         function showReadingLessons() {
-            const lessonsDiv = document.getElementById('readingLessons');
+            const readingDiv = document.getElementById('readingLessons');
+            const writingRecDiv = document.getElementById('writingRecognition');
+            const writingPracDiv = document.getElementById('writingPractice');
             const cardsDiv = document.querySelector('.category-cards');
             
-            if (lessonsDiv.style.display === 'none') {
-                lessonsDiv.style.display = 'grid';
-                cardsDiv.style.display = 'none';
-            }
+            readingDiv.style.display = 'grid';
+            writingRecDiv.style.display = 'none';
+            writingPracDiv.style.display = 'none';
+            cardsDiv.style.display = 'none';
+        }
+
+        function showWritingRecognition() {
+            const readingDiv = document.getElementById('readingLessons');
+            const writingRecDiv = document.getElementById('writingRecognition');
+            const writingPracDiv = document.getElementById('writingPractice');
+            const cardsDiv = document.querySelector('.category-cards');
+            
+            readingDiv.style.display = 'none';
+            writingRecDiv.style.display = 'grid';
+            writingPracDiv.style.display = 'none';
+            cardsDiv.style.display = 'none';
+        }
+
+        function showWritingPractice() {
+            const readingDiv = document.getElementById('readingLessons');
+            const writingRecDiv = document.getElementById('writingRecognition');
+            const writingPracDiv = document.getElementById('writingPractice');
+            const cardsDiv = document.querySelector('.category-cards');
+            
+            readingDiv.style.display = 'none';
+            writingRecDiv.style.display = 'none';
+            writingPracDiv.style.display = 'grid';
+            cardsDiv.style.display = 'none';
         }
     </script>
 </body>

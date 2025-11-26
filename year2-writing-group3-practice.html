@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2 - Arabic Letter Writing Practice (Group 3)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="year2-kahoot-style.css">
+    <style>
+        /* Additional styles for canvas writing mode */
+        .canvas-container {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .canvas-instructions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .instruction-icon {
+            font-size: 1.5rem;
+        }
+
+        .drawing-canvas {
+            width: 100%;
+            height: 300px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            cursor: crosshair;
+            touch-action: none;
+            display: block;
+        }
+
+        .canvas-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .canvas-btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+
+        .clear-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .clear-btn:hover:not(:disabled) {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 233, 123, 0.3);
+        }
+
+        .drawing-tools {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .tool-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .brush-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+        }
+
+        .brush-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .brush-slider::-webkit-slider-thumb:hover {
+            background: #764ba2;
+        }
+
+        .brush-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .size-value {
+            font-weight: 700;
+            color: #667eea;
+            min-width: 45px;
+            font-size: 1rem;
+        }
+
+        .english-prompt-display {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .prompt-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .answer-reveal {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .reveal-label {
+            font-size: 1rem;
+            color: #555;
+            margin: 0 0 10px 0;
+        }
+
+        .correct-letter-display {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #2196F3;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .next-button {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Additional missing styles */
+        .mode-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 20px 0 10px 0;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin: 0 0 20px 0;
+        }
+
+        .reveal-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .reveal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .reveal-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Add white card background to screen */
+        #writeScreen {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the header properly */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        /* Progress container styling */
+        .progress-container {
+            margin-bottom: 25px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        /* Content wrapper */
+        .content {
+            margin-top: 20px;
+        }
+
+        /* Feedback styling */
+        .feedback {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feedback-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feedback-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Next button styling */
+        .next-btn {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 233, 123, 0.4);
+        }
+
+        /* Results screen styling */
+        #resultsScreen {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .results-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .results-emoji {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .final-score {
+            margin: 30px 0;
+        }
+
+        .score-circle {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .results-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .results-actions {
+            margin-top: 30px;
+        }
+
+        .results-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .results-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Write Mode Screen -->
+        <div id="writeScreen" class="screen active">
+            <!-- Header with progress -->
+            <div class="header">
+                <button id="backBtn" class="back-btn">← Back to Menu</button>
+                <div class="score-badge">
+                    <span class="star-icon">⭐</span>
+                    <span id="score">0</span>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="progress">Question 1 of 28</span>
+                    <span id="percent">4%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="content">
+                <h2 class="mode-title">✍️ Writing Practice - Group 3</h2>
+                <p class="subtitle">Draw the Arabic letter with your finger, stylus, or mouse</p>
+                
+                <!-- Prompt Display -->
+                <div class="english-prompt-display">
+                    <p id="promptText" class="prompt-text"></p>
+                </div>
+                
+                <!-- Drawing Canvas -->
+                <div class="canvas-container">
+                    <div class="canvas-instructions">
+                        <span class="instruction-icon">👆</span>
+                        <span>Use your finger, mouse, or pen to write the letter</span>
+                    </div>
+                    <canvas id="drawingCanvas" class="drawing-canvas"></canvas>
+                    
+                    <!-- Canvas Controls -->
+                    <div class="canvas-controls">
+                        <button id="clearCanvas" class="canvas-btn clear-btn">
+                            <span class="btn-icon">🗑️</span>
+                            <span>Clear</span>
+                        </button>
+                        <button id="submitDrawing" class="canvas-btn submit-btn" disabled>
+                            <span class="btn-icon">✓</span>
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Drawing Tools -->
+                    <div class="drawing-tools">
+                        <label class="tool-label">Brush Size:</label>
+                        <input type="range" id="brushSize" min="2" max="20" value="8" class="brush-slider">
+                        <span id="brushSizeValue" class="size-value">8px</span>
+                    </div>
+
+                    <!-- Reveal Answer Button (shown before submit) -->
+                    <div style="text-align: center;">
+                        <button id="revealAnswer" class="reveal-btn">
+                            <span>👀</span>
+                            <span>Reveal Correct Answer</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Answer Preview (initially hidden) -->
+                <div id="answerPreview" class="answer-reveal hidden">
+                    <p class="reveal-label">The correct form is:</p>
+                    <div id="correctAnswerPreview" class="correct-letter-display"></div>
+                </div>
+
+                <!-- Feedback Section (initially hidden) -->
+                <div id="feedback" class="feedback hidden">
+                    <div id="feedbackEmoji" class="feedback-emoji"></div>
+                    <p id="feedbackText" class="feedback-text"></p>
+                    
+                    <!-- Show Correct Answer in Feedback -->
+                    <div class="answer-reveal">
+                        <p class="reveal-label">The correct form is:</p>
+                        <div id="correctAnswer" class="correct-letter-display"></div>
+                    </div>
+                    
+                    <button id="nextBtn" class="next-btn next-button">
+                        <span id="nextText">Next Question</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen hidden">
+            <div class="results-container">
+                <div class="results-emoji" id="resultsEmoji">🎉</div>
+                <h2 id="resultsMessage">Amazing Work!</h2>
+                <div class="final-score">
+                    <div class="score-circle">
+                        <span id="finalStars" class="final-stars">0</span>
+                        <span class="star-icon-large">⭐</span>
+                    </div>
+                    <p class="score-label">Total Stars</p>
+                </div>
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalQuestions">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button id="backToMenuBtn" class="results-btn">
+                        <span class="btn-icon">🏠</span>
+                        Back to Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="year2-writing-group3-practice-script.js"></script>
+</body>
+</html>

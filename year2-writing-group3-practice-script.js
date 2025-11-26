@@ -1,46 +1,49 @@
-// Year 2 - Arabic Letter Writing Practice (Group 1)
-// Letters: أ ب ت ث ج ح خ
+// Year 2 - Arabic Letter Writing Practice (Group 3)
+// Letters: ض ط ظ ع غ ف ق
 
 // Writing data
 const writingData = [
-    // Alif (أ) - Only isolated form
-    { id: "alif-isolated", prompt: "Write the letter Alif (أ) in isolated form", expectedAnswer: "أ", explanation: "Alif is a non-connecting letter and only appears in isolated form" },
+    // Ḍād (ض) - All four forms
+    { id: "dad-isolated", prompt: "Write the letter Ḍād (ض) in isolated form", expectedAnswer: "ض", explanation: "This is Ḍād in isolated form - like Ṣād but with a dot above" },
+    { id: "dad-beginning", prompt: "Write the letter Ḍād (ض) at the beginning of a word", expectedAnswer: "ضـ", explanation: "This is Ḍād at the beginning - with a dot above" },
+    { id: "dad-middle", prompt: "Write the letter Ḍād (ض) in the middle of a word", expectedAnswer: "ـضـ", explanation: "This is Ḍād in the middle - connected on both sides with a dot above" },
+    { id: "dad-end", prompt: "Write the letter Ḍād (ض) at the end of a word", expectedAnswer: "ـض", explanation: "This is Ḍād at the end - with a dot above" },
     
-    // Bā' (ب) - All four forms
-    { id: "ba-isolated", prompt: "Write the letter Bā' (ب) in isolated form", expectedAnswer: "ب", explanation: "This is Bā' in isolated form - not connected to any other letters" },
-    { id: "ba-beginning", prompt: "Write the letter Bā' (ب) at the beginning of a word", expectedAnswer: "بـ", explanation: "This is Bā' at the beginning - connected to the letter after it" },
-    { id: "ba-middle", prompt: "Write the letter Bā' (ب) in the middle of a word", expectedAnswer: "ـبـ", explanation: "This is Bā' in the middle - connected on both sides" },
-    { id: "ba-end", prompt: "Write the letter Bā' (ب) at the end of a word", expectedAnswer: "ـب", explanation: "This is Bā' at the end - connected to the letter before it" },
+    // Ṭā' (ط) - All four forms
+    { id: "taa-isolated", prompt: "Write the letter Ṭā' (ط) in isolated form", expectedAnswer: "ط", explanation: "This is Ṭā' in isolated form - looks like a bowl shape" },
+    { id: "taa-beginning", prompt: "Write the letter Ṭā' (ط) at the beginning of a word", expectedAnswer: "طـ", explanation: "This is Ṭā' at the beginning - flat on top" },
+    { id: "taa-middle", prompt: "Write the letter Ṭā' (ط) in the middle of a word", expectedAnswer: "ـطـ", explanation: "This is Ṭā' in the middle - flat shape" },
+    { id: "taa-end", prompt: "Write the letter Ṭā' (ط) at the end of a word", expectedAnswer: "ـط", explanation: "This is Ṭā' at the end - like a bowl hanging down" },
     
-    // Tā' (ت) - All four forms
-    { id: "ta-isolated", prompt: "Write the letter Tā' (ت) in isolated form", expectedAnswer: "ت", explanation: "This is Tā' in isolated form - it looks like Bā' but with 2 dots above" },
-    { id: "ta-beginning", prompt: "Write the letter Tā' (ت) at the beginning of a word", expectedAnswer: "تـ", explanation: "This is Tā' at the beginning - with 2 dots above" },
-    { id: "ta-middle", prompt: "Write the letter Tā' (ت) in the middle of a word", expectedAnswer: "ـتـ", explanation: "This is Tā' in the middle - connected on both sides with 2 dots above" },
-    { id: "ta-end", prompt: "Write the letter Tā' (ت) at the end of a word", expectedAnswer: "ـت", explanation: "This is Tā' at the end - with 2 dots above" },
+    // Ẓā' (ظ) - All four forms
+    { id: "zaa-isolated", prompt: "Write the letter Ẓā' (ظ) in isolated form", expectedAnswer: "ظ", explanation: "This is Ẓā' in isolated form - like Ṭā' but with a dot above" },
+    { id: "zaa-beginning", prompt: "Write the letter Ẓā' (ظ) at the beginning of a word", expectedAnswer: "ظـ", explanation: "This is Ẓā' at the beginning - flat on top with a dot above" },
+    { id: "zaa-middle", prompt: "Write the letter Ẓā' (ظ) in the middle of a word", expectedAnswer: "ـظـ", explanation: "This is Ẓā' in the middle - flat shape with a dot above" },
+    { id: "zaa-end", prompt: "Write the letter Ẓā' (ظ) at the end of a word", expectedAnswer: "ـظ", explanation: "This is Ẓā' at the end - with a dot above" },
     
-    // Thā' (ث) - All four forms
-    { id: "tha-isolated", prompt: "Write the letter Thā' (ث) in isolated form", expectedAnswer: "ث", explanation: "This is Thā' in isolated form - like Bā' but with 3 dots above" },
-    { id: "tha-beginning", prompt: "Write the letter Thā' (ث) at the beginning of a word", expectedAnswer: "ثـ", explanation: "This is Thā' at the beginning - with 3 dots above" },
-    { id: "tha-middle", prompt: "Write the letter Thā' (ث) in the middle of a word", expectedAnswer: "ـثـ", explanation: "This is Thā' in the middle - connected on both sides with 3 dots above" },
-    { id: "tha-end", prompt: "Write the letter Thā' (ث) at the end of a word", expectedAnswer: "ـث", explanation: "This is Thā' at the end - with 3 dots above" },
+    // 'Ayn (ع) - All four forms
+    { id: "ayn-isolated", prompt: "Write the letter 'Ayn (ع) in isolated form", expectedAnswer: "ع", explanation: "This is 'Ayn in isolated form - has a unique curved shape" },
+    { id: "ayn-beginning", prompt: "Write the letter 'Ayn (ع) at the beginning of a word", expectedAnswer: "عـ", explanation: "This is 'Ayn at the beginning - small curved shape" },
+    { id: "ayn-middle", prompt: "Write the letter 'Ayn (ع) in the middle of a word", expectedAnswer: "ـعـ", explanation: "This is 'Ayn in the middle - simplified curved form" },
+    { id: "ayn-end", prompt: "Write the letter 'Ayn (ع) at the end of a word", expectedAnswer: "ـع", explanation: "This is 'Ayn at the end - curved with a tail" },
     
-    // Jīm (ج) - All four forms
-    { id: "jeem-isolated", prompt: "Write the letter Jīm (ج) in isolated form", expectedAnswer: "ج", explanation: "This is Jīm in isolated form - looks like a small bowl with 1 dot in the center" },
-    { id: "jeem-beginning", prompt: "Write the letter Jīm (ج) at the beginning of a word", expectedAnswer: "جـ", explanation: "This is Jīm at the beginning - flat on top with a dot" },
-    { id: "jeem-middle", prompt: "Write the letter Jīm (ج) in the middle of a word", expectedAnswer: "ـجـ", explanation: "This is Jīm in the middle - flat shape with a dot in the center" },
-    { id: "jeem-end", prompt: "Write the letter Jīm (ج) at the end of a word", expectedAnswer: "ـج", explanation: "This is Jīm at the end - like a bowl hanging down with a dot" },
+    // Ghayn (غ) - All four forms
+    { id: "ghayn-isolated", prompt: "Write the letter Ghayn (غ) in isolated form", expectedAnswer: "غ", explanation: "This is Ghayn in isolated form - like 'Ayn but with a dot above" },
+    { id: "ghayn-beginning", prompt: "Write the letter Ghayn (غ) at the beginning of a word", expectedAnswer: "غـ", explanation: "This is Ghayn at the beginning - like 'Ayn with a dot above" },
+    { id: "ghayn-middle", prompt: "Write the letter Ghayn (غ) in the middle of a word", expectedAnswer: "ـغـ", explanation: "This is Ghayn in the middle - curved form with a dot above" },
+    { id: "ghayn-end", prompt: "Write the letter Ghayn (غ) at the end of a word", expectedAnswer: "ـغ", explanation: "This is Ghayn at the end - with a dot above" },
     
-    // Ḥā' (ح) - All four forms
-    { id: "haa-isolated", prompt: "Write the letter Ḥā' (ح) in isolated form", expectedAnswer: "ح", explanation: "This is Ḥā' in isolated form - looks like Jīm but without any dot" },
-    { id: "haa-beginning", prompt: "Write the letter Ḥā' (ح) at the beginning of a word", expectedAnswer: "حـ", explanation: "This is Ḥā' at the beginning - flat on top like Jīm without a dot" },
-    { id: "haa-middle", prompt: "Write the letter Ḥā' (ح) in the middle of a word", expectedAnswer: "ـحـ", explanation: "This is Ḥā' in the middle - flat shape like Jīm without a dot" },
-    { id: "haa-end", prompt: "Write the letter Ḥā' (ح) at the end of a word", expectedAnswer: "ـح", explanation: "This is Ḥā' at the end - like Jīm at the end but without a dot" },
+    // Fā' (ف) - All four forms
+    { id: "faa-isolated", prompt: "Write the letter Fā' (ف) in isolated form", expectedAnswer: "ف", explanation: "This is Fā' in isolated form - like Qāf but with 1 dot above" },
+    { id: "faa-beginning", prompt: "Write the letter Fā' (ف) at the beginning of a word", expectedAnswer: "فـ", explanation: "This is Fā' at the beginning - with 1 dot above" },
+    { id: "faa-middle", prompt: "Write the letter Fā' (ف) in the middle of a word", expectedAnswer: "ـفـ", explanation: "This is Fā' in the middle - simplified form with 1 dot above" },
+    { id: "faa-end", prompt: "Write the letter Fā' (ف) at the end of a word", expectedAnswer: "ـف", explanation: "This is Fā' at the end - with 1 dot above" },
     
-    // Khā' (خ) - All four forms
-    { id: "kha-isolated", prompt: "Write the letter Khā' (خ) in isolated form", expectedAnswer: "خ", explanation: "This is Khā' in isolated form - looks like Jīm but with 1 dot above" },
-    { id: "kha-beginning", prompt: "Write the letter Khā' (خ) at the beginning of a word", expectedAnswer: "خـ", explanation: "This is Khā' at the beginning - flat on top with 1 dot above" },
-    { id: "kha-middle", prompt: "Write the letter Khā' (خ) in the middle of a word", expectedAnswer: "ـخـ", explanation: "This is Khā' in the middle - flat shape with 1 dot above" },
-    { id: "kha-end", prompt: "Write the letter Khā' (خ) at the end of a word", expectedAnswer: "ـخ", explanation: "This is Khā' at the end - like a bowl hanging down with 1 dot above" }
+    // Qāf (ق) - All four forms
+    { id: "qaaf-isolated", prompt: "Write the letter Qāf (ق) in isolated form", expectedAnswer: "ق", explanation: "This is Qāf in isolated form - has 2 dots above" },
+    { id: "qaaf-beginning", prompt: "Write the letter Qāf (ق) at the beginning of a word", expectedAnswer: "قـ", explanation: "This is Qāf at the beginning - with 2 dots above" },
+    { id: "qaaf-middle", prompt: "Write the letter Qāf (ق) in the middle of a word", expectedAnswer: "ـقـ", explanation: "This is Qāf in the middle - simplified form with 2 dots above" },
+    { id: "qaaf-end", prompt: "Write the letter Qāf (ق) at the end of a word", expectedAnswer: "ـق", explanation: "This is Qāf at the end - with 2 dots above" }
 ];
 
 // Global variables

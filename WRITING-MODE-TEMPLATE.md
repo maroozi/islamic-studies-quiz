@@ -207,18 +207,51 @@ function drawWritingLine() {
 
 ### Drawing Functions
 
+#### Enhanced Touch Support
+
+The drawing functions use the **Pointer Events API** for universal input handling (mouse, touch, stylus, pen) with proper event prevention to avoid scrolling/zooming during drawing.
+
 ```javascript
+function initializeCanvas() {
+    // ... canvas setup ...
+    
+    // Use Pointer Events API for universal input (touch, mouse, pen)
+    if (window.PointerEvent) {
+        canvas.addEventListener('pointerdown', startDrawing);
+        canvas.addEventListener('pointermove', draw);
+        canvas.addEventListener('pointerup', stopDrawing);
+        canvas.addEventListener('pointerout', stopDrawing);
+        canvas.addEventListener('pointercancel', stopDrawing);
+    } else {
+        // Fallback for older browsers
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+    }
+}
+
 function startDrawing(e) {
+    e.preventDefault(); // Prevent scrolling/zooming on touch devices
     isDrawing = true;
     const coords = getMousePos(e);
     lastX = coords.x;
     lastY = coords.y;
     hasDrawn = true;
     submitDrawing.disabled = false;
+    
+    // Draw a small dot at the start point for immediate feedback
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, ctx.lineWidth / 2, 0, Math.PI * 2);
+    ctx.fill();
 }
 
 function draw(e) {
     if (!isDrawing) return;
+    e.preventDefault(); // Prevent scrolling while drawing
     
     const coords = getMousePos(e);
     
@@ -231,7 +264,8 @@ function draw(e) {
     lastY = coords.y;
 }
 
-function stopDrawing() {
+function stopDrawing(e) {
+    if (e) e.preventDefault();
     isDrawing = false;
 }
 
@@ -240,28 +274,14 @@ function getMousePos(e) {
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
     
+    // Handle both touch and pointer/mouse events
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
     return {
-        x: (e.clientX - rect.left) * scaleX,
-        y: (e.clientY - rect.top) * scaleY
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
     };
-}
-
-function handleTouchStart(e) {
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousedown', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-    });
-    canvas.dispatchEvent(mouseEvent);
-}
-
-function handleTouchMove(e) {
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-    });
-    canvas.dispatchEvent(mouseEvent);
 }
 
 function clearDrawingCanvas() {

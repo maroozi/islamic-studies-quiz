@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2: Arabic Writing - Group 3</title>
+    <link rel="stylesheet" href="year2-kahoot-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Make Arabic letters bigger and more visible */
+        .question-text {
+            font-size: 3rem !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* Make Arabic letters in topic bubbles bigger too */
+        .bubble-emoji {
+            font-size: 2.5rem !important;
+        }
+        
+        /* Make answer letters even bigger for writing practice */
+        .answer-text {
+            font-size: 2.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
+                <div class="title-section">
+                    <h1 class="game-title">✍️ Arabic Writing - Group 3!</h1>
+                    <p class="subtitle">Year 2 – Arabic Term 1</p>
+                    <div class="fun-badge">✨ Practice Letter Forms! ✨</div>
+                </div>
+                
+                <div class="lesson-preview">
+                    <h2>Today's Letters:</h2>
+                    <div class="topic-grid">
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="bubble-emoji">ض ط ظ</span>
+                            <span class="bubble-text">Ḍād Ṭā' Ẓā'</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="bubble-emoji">ع غ</span>
+                            <span class="bubble-text">'Ayn Ghayn</span>
+                        </div>
+                        <div class="topic-bubble" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span class="bubble-emoji">ف ق</span>
+                            <span class="bubble-text">Fā' Qāf</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-item">
+                        <span class="info-icon">📝</span>
+                        <span class="info-text">28 Questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⭐</span>
+                        <span class="info-text">280 Stars Available</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span class="info-text">Take Your Time</span>
+                    </div>
+                </div>
+                
+                <button id="startBtn" class="start-btn">
+                    <span class="btn-icon">🎮</span>
+                    <span class="btn-text">Start Quiz</span>
+                    <span class="btn-icon">🎮</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="header-top">
+                    <button id="backBtn" class="back-btn">← Back to Menu</button>
+                    <div class="score-badge">
+                        <span class="star-icon">⭐</span>
+                        <span id="score">0</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="progress">Question 1 of 28</span>
+                        <span id="percent">4%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-container">
+                    <h2 id="question" class="question-text"></h2>
+                </div>
+
+                <div class="answers-grid" id="answersGrid">
+                    <!-- Answers will be inserted here -->
+                </div>
+
+                <div id="feedback" class="feedback hidden">
+                    <div class="feedback-content">
+                        <div id="feedbackEmoji" class="feedback-emoji"></div>
+                        <p id="feedbackText" class="feedback-text"></p>
+                        <button id="nextBtn" class="next-btn">
+                            <span id="nextText">Next Question</span>
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-container">
+                <div class="results-emoji" id="resultsEmoji">🎉</div>
+                <h2 id="resultsMessage">Amazing Work!</h2>
+                <div class="final-score">
+                    <div class="score-circle">
+                        <span id="finalStars" class="final-stars">0</span>
+                        <span class="star-icon-large">⭐</span>
+                    </div>
+                    <p class="score-label">Total Stars</p>
+                </div>
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalQuestions">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button id="backToMenuBtn" class="results-btn">
+                        <span class="btn-icon">🏠</span>
+                        Back to Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="year2-writing-group3-script.js"></script>
+</body>
+</html>
