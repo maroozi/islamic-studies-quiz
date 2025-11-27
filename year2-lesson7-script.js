@@ -260,6 +260,14 @@ function selectAnswer(selectedIndex, selectedButton) {
     explanation.textContent = question.explanation;
     feedbackContainer.classList.add('show');
     nextBtn.disabled = false;
+    
+    // Update button text for last question
+    const questionsArray = isReviewMode ? reviewQuestions : questions;
+    if (currentQuestionIndex === questionsArray.length - 1) {
+        nextBtn.textContent = '🎉 Finish Quiz →';
+    } else {
+        nextBtn.textContent = 'Next Question →';
+    }
 }
 
 function nextQuestion() {
