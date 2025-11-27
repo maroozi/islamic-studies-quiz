@@ -1,3 +1,20 @@
+/*
+ * Year 6 Arabic Studies - Cross-Platform Font Support
+ * 
+ * IMPORTANT: Arabic text rendering fixed for iPad/iOS compatibility
+ * 
+ * Previous Issue: Used Windows-only fonts ('Traditional Arabic', 'Arabic Typesetting')
+ * that don't exist on iPad, causing Arabic text to appear as boxes or render incorrectly.
+ * 
+ * Solution: Updated .arabic-word font stack with cross-platform Arabic fonts:
+ * - Geeza Pro (iOS/macOS native)
+ * - Traditional Arabic (Windows)
+ * - Tahoma (universal fallback with good Arabic support)
+ * - Increased line-height for diacritic spacing
+ * 
+ * Future Enhancement: Add web fonts (Noto Sans Arabic or Amiri) for guaranteed consistency
+ */
+
 * {
     margin: 0;
     padding: 0;
@@ -446,8 +463,18 @@ body {
     font-weight: 700;
     color: #2c3e50;
     direction: rtl;
-    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Geeza Pro', Arial, sans-serif;
-    line-height: 1.4;
+    /* Updated font stack for cross-platform Arabic support */
+    font-family: 
+        'Noto Sans Arabic',          /* Modern, excellent cross-platform support (if added as web font) */
+        'Geeza Pro',                  /* iOS/macOS native Arabic font */
+        'Traditional Arabic',         /* Windows 7+ */
+        'Arabic Typesetting',         /* Windows */
+        'Tahoma',                     /* Good Arabic fallback on older systems */
+        'DejaVu Sans',                /* Linux/Android fallback */
+        'Arial Unicode MS',           /* Better Arabic support than plain Arial */
+        sans-serif;
+    line-height: 1.6;                 /* Increased for better diacritic spacing */
+    letter-spacing: 0.02em;           /* Slightly wider for readability */
     animation: wordPop 0.6s ease-out;
 }
 
